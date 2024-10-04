@@ -201,7 +201,7 @@
 <p>距离的选择</p>
 <p>像素点对应相减   </p>
 <p>L1（Manhattan） distance:<br>$$<br>d_1(I_1,I_2)=\Sigma_P{|I_1^P-I_2^P|}<br>$$</p>
-
+<img src="/2024/10/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/Snipaste_2024-08-14_08-55-25.png" class="">
 
 <p>L2 （Euclidean）distance<br>$$<br>d_1(I_1,I_2)=\sqrt{\Sigma_P{(I_1^P-I_2^P)}^2}<br>$$<br>对于K近邻来说，参数对结果影响很大，交叉验证是最合适的参数选择方法。</p>
 <p>K近邻交叉验证：</p>
@@ -451,10 +451,10 @@
 <img src="/2024/10/04/深度学习/Snipaste_2024-08-17_06-59-49.png" style="zoom:80%;"></li>
 </ul>
 <h4 id="10-残差网络Resnet"><a href="#10-残差网络Resnet" class="headerlink" title="10 残差网络Resnet"></a>10 残差网络Resnet</h4><p>深层网络遇到的问题，56层网络深度在测试时错误率比20层要高很多，因为就是无法保障上一层的训练数据比之前的更好，所以变深可能就出现偏差</p>
-
+<img src="/2024/10/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/Snipaste_2024-08-17_07-01-31.png" class="">
 
 <p>解决方法：</p>
-
+<img src="/2024/10/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/Snipaste_2024-08-17_07-03-12.png" class="">
 
 <blockquote>
 <ul>
@@ -510,7 +510,7 @@
 <img src="/2024/10/04/深度学习/Snipaste_2024-08-17_08-32-46.png" style="zoom:60%;">
 
 <h4 id="13-word2rec"><a href="#13-word2rec" class="headerlink" title="13 word2rec"></a>13 word2rec</h4><p>word2vec也叫word embeddings，中文名“词向量”，作用就是将自然语言中的字词转为计算机可以理解的稠密向量（Dense Vector）。在word2vec出现之前，自然语言处理经常把字词转为离散的单独的符号，也就是One-Hot Encoder。</p>
-
+<img src="/2024/10/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/Snipaste_2024-08-17_08-43-38.png" class="">
 
 <p>只要有了向量就可以使用不同的方法来计算相似度，比如</p>
 <ul>
@@ -553,7 +553,7 @@
 <img src="/2024/10/04/深度学习/Snipaste_2024-08-27_08-40-25.png" style="zoom:60%;">
 
 <p>改进：加入一些负样本（负采样模型），认为的创建一些语料库中上下文没有的词。正样本就是语料库中有上下文关系的。</p>
-
+<img src="/2024/10/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/Snipaste_2024-08-27_08-43-04.png" class="">
 
 <h5 id="13-3-词向量训练过程"><a href="#13-3-词向量训练过程" class="headerlink" title="13.3 词向量训练过程"></a>13.3 词向量训练过程</h5><p>1 初始化词向量矩阵</p>
 <img src="/2024/10/04/深度学习/Snipaste_2024-08-27_08-51-13.png" style="zoom:60%;">

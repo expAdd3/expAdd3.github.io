@@ -181,16 +181,16 @@
 <img src="/2024/10/04/命令行参数激活profile/Snipaste_2024-08-05_14-43-16.png" style="zoom:50%;">
 
 <p>点击Apply再次运行项目，可以看到profile激活成功，端口更改为8081</p>
-
+<img src="/2024/10/04/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E6%BF%80%E6%B4%BBprofile/Snipaste_2024-08-05_15-29-02.png" class="">
 
 <h3 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h3><p>将SpringBoot项目打成jar包，使用命令行运行。</p>
 <p>在maven中找到当前项目，点击package进行打包。</p>
-
+<img src="/2024/10/04/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E6%BF%80%E6%B4%BBprofile/Snipaste_2024-08-05_15-34-23.png" class="">
 
 <p>随后在命令行中运行该项目：</p>
 <figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java <span class="literal">-jar</span> ./springboot<span class="literal">-profile-0</span>.<span class="number">0.1</span><span class="literal">-SNAPSHOT</span>.jar <span class="literal">--spring</span>.profiles.active=XXX</span><br></pre></td></tr></tbody></table></figure>
 
-
+<img src="/2024/10/04/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E6%BF%80%E6%B4%BBprofile/Snipaste_2024-08-05_15-12-14.png" class="">
 
 <h3 id="遇到的错误总结："><a href="#遇到的错误总结：" class="headerlink" title="遇到的错误总结："></a>遇到的错误总结：</h3><h4 id="Error-1：无法打包项目"><a href="#Error-1：无法打包项目" class="headerlink" title="Error 1：无法打包项目"></a>Error 1：无法打包项目</h4><p>报错：</p>
 <blockquote>
@@ -202,7 +202,7 @@
 <li>系统环境变量Maven版本与IDEA中使用的Maven版本不一致。</li>
 </ol>
 <p>我在打包时IDEA中使用的，Maven版本为3.6.3，JDK版本为17，但是打开环境变量发现我设置的Maven版本为3.8.6，需要改成3.6.3，就可以正常打包了。</p>
-
+<img src="/2024/10/04/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E6%BF%80%E6%B4%BBprofile/Snipaste_2024-08-05_14-52-55.png" class="">
 
 <h4 id="Error-2：命令行运行jar包出错"><a href="#Error-2：命令行运行jar包出错" class="headerlink" title="Error 2：命令行运行jar包出错"></a>Error 2：命令行运行jar包出错</h4><p>报错：</p>
 <blockquote>
