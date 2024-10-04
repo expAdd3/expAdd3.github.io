@@ -153,188 +153,139 @@
 <p>Git易于学习，占地面积小，性能极快。 它具有廉价的本地库，方便的暂存区域和多个工作流分支等特性。其性能优于Subversion(svn)、CVS、Perforce和ClearCase等版本控制工具。</p>
 <h4 id="1-1-版本控制"><a href="#1-1-版本控制" class="headerlink" title="1.1 版本控制"></a>1.1 版本控制</h4><p>版本控制是一种记录文件内容变化，以便将来查阅特定版本修订情况的系统。</p>
 <p>版本控制其实最重要的是可以记录文件修改历史记录，从而让用户能够查看历史版本，方便版本切换。就是比如在文件名后面加一些特殊的标识来表示它的更新迭代。</p>
-<img src="/2024/10/04/Git/Snipaste_2024-09-11_12-43-40.jpg" style="zoom:80%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-11_12-43-40.jpg" style="zoom:80%;"></p>
 <p>主要实现了两个作用：</p>
 <ul>
 <li>保存重要的历史记录</li>
 <li>恢复数据</li>
 </ul>
-<h4 id="1-2-GitHub-Desktop使用"><a href="#1-2-GitHub-Desktop使用" class="headerlink" title="1.2 GitHub Desktop使用"></a>1.2 GitHub Desktop使用</h4><h5 id="1-2-1-创建删除本地仓库"><a href="#1-2-1-创建删除本地仓库" class="headerlink" title="1.2.1 创建删除本地仓库"></a>1.2.1 创建删除本地仓库</h5><img src="/2024/10/04/Git/Snipaste_2024-09-11_13-18-53.jpg" style="zoom:50%;">
-
+<h4 id="1-2-GitHub-Desktop使用"><a href="#1-2-GitHub-Desktop使用" class="headerlink" title="1.2 GitHub Desktop使用"></a>1.2 GitHub Desktop使用</h4><h5 id="1-2-1-创建删除本地仓库"><a href="#1-2-1-创建删除本地仓库" class="headerlink" title="1.2.1 创建删除本地仓库"></a>1.2.1 创建删除本地仓库</h5><p><img src="/2024/10/04/Git/Snipaste_2024-09-11_13-18-53.jpg" style="zoom:50%;"></p>
 <p>当然可以同时创建很多个仓库。</p>
 <p>在删除仓库时：如果不勾选下面的“Also move this repository to Recycle Bin”，那么这个库就是在本软件中不可见，其实在文件夹里还是在的，可以在文件夹中找到这个库，再给他加回来（直接拖到软件里就行），勾选了的话下面就彻底删除了，放到回收站里了，可以再恢复。</p>
-<img src="/2024/10/04/Git/Snipaste_2024-09-11_13-24-22.jpg" style="zoom:50%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-11_13-24-22.jpg" style="zoom:50%;"></p>
 <h5 id="1-2-2-文件操作"><a href="#1-2-2-文件操作" class="headerlink" title="1.2.2 文件操作"></a>1.2.2 文件操作</h5><p>增加文件，在库的目录下存在的文件，软件中可以显示</p>
-<img src="/2024/10/04/Git/Snipaste_2024-09-11_13-32-34.jpg" style="zoom:50%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-11_13-32-34.jpg" style="zoom:50%;"></p>
 <p>即使这边显示了，他也并没有真正存到本地仓库中，需要进行提交才可以存到仓库中。而GitHub Desktop这个Client就相当于是执行了文件比对操作。但是呢，这个比对只是针对文本文件。</p>
 <p>提交：</p>
-<img src="/2024/10/04/Git/Snipaste_2024-09-11_13-41-46.jpg" style="zoom:50%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-11_13-41-46.jpg" style="zoom:50%;"></p>
 <p>示意图：</p>
-<img src="/2024/10/04/Git/Snipaste_2024-09-11_13-37-50.jpg" style="zoom:50%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-11_13-37-50.jpg" style="zoom:50%;"></p>
 <p>若后续文件发生变化，还需要再次提交才可以，此时提交上去相当于有两个文件，一个之前的，一个新的修改的，这两个文件版本号不一样。</p>
 <p>提交：</p>
-<img src="/2024/10/04/Git/Snipaste_2024-09-11_13-43-07.jpg" style="zoom:50%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-11_13-43-07.jpg" style="zoom:50%;"></p>
 <p>示意图：</p>
-<img src="/2024/10/04/Git/Snipaste_2024-09-11_13-39-42.jpg" style="zoom:54%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-11_13-39-42.jpg" style="zoom:54%;"></p>
 <p>在历史记录中就可以看到每次的操作日志，可以看到文件内容变化了什么，并且可以看到每个文件的版本号（圈出来的）</p>
-<img src="/2024/10/04/Git/Snipaste_2024-09-11_13-44-19.jpg" style="zoom:50%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-11_13-44-19.jpg" style="zoom:50%;"></p>
 <p>按说版本号是一些数字，但是Git做了一些特殊的处理，Git采用的是40个16进制的数字组成的版本号，是在提交的时候生成的，也叫：提交码，可以在库中<code>.git</code>文件夹下的<code>objects</code>中找到这个提交码对应的文件。</p>
 <p>如果想要删除文件，删除本地文件之后，会检测出来文件变化，这时候再提交，那么库中也会被删掉。</p>
 <h5 id="1-2-3-分支操作"><a href="#1-2-3-分支操作" class="headerlink" title="1.2.3 分支操作"></a>1.2.3 分支操作</h5><p>假如说在项目中A负责user部分，B负责order部分，那么其实这两个人提交的时候不应该直接提交到库中，而是提交到一个分支中，当全都结束后，再把这两个分支进行合并，归到主分支中</p>
-<img src="/2024/10/04/Git/Snipaste_2024-09-11_14-29-53.jpg" style="zoom:67%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-11_14-29-53.jpg" style="zoom:67%;"></p>
 <blockquote>
 <p>这个<code>order</code>和<code>user</code>就是新建的分支，直接点击<code>New branch</code>就可以，然后为每个新建的分支中添加文件，全部完毕后首先进入主分支，再点击下面的<code>Choose a branch to merge into main</code>将其他分支一个一个加进来，若存在重名的文件，可能需要修改内容才能成功并入。</p>
 </blockquote>
 <p>因为并入之后没有说明了，难看懂，所以这时候可以在历史记录中找到对应的操作给他添加<code>Tag</code>来说明一下。</p>
-<img src="/2024/10/04/Git/Snipaste_2024-09-11_14-36-18.jpg" style="zoom:60%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-11_14-36-18.jpg" style="zoom:60%;"></p>
 <p>最终结果如下：</p>
-<img src="/2024/10/04/Git/Snipaste_2024-09-11_14-38-01.jpg" style="zoom:80%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-11_14-38-01.jpg" style="zoom:80%;"></p>
 <h5 id="1-2-4-远程仓库"><a href="#1-2-4-远程仓库" class="headerlink" title="1.2.4 远程仓库"></a>1.2.4 远程仓库</h5><h6 id="1-2-4-1-GitHub"><a href="#1-2-4-1-GitHub" class="headerlink" title="1.2.4.1 GitHub"></a>1.2.4.1 GitHub</h6><p>对于本地仓库的数据肯定要存到中央服务器上，也就是需要一个远程仓库，直接在github上创建一个属于自己远程仓库。</p>
-<img src="/2024/10/04/Git/Snipaste_2024-09-11_14-42-39.jpg" style="zoom:40%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-11_14-42-39.jpg" style="zoom:40%;"></p>
 <p>后续填写一些基础信息，之后创建就行了</p>
-<img src="/2024/10/04/Git/Snipaste_2024-09-11_14-46-55.jpg" style="zoom:60%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-11_14-46-55.jpg" style="zoom:60%;"></p>
 <blockquote>
 <p><code>Private</code>就是仅自己可见的</p>
 <p><code>Add a README file</code>就是加上<code>README</code>文件</p>
 </blockquote>
 <p>创建结果就是</p>
-<img src="/2024/10/04/Git/Snipaste_2024-09-11_14-48-55.jpg" style="zoom:47%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-11_14-48-55.jpg" style="zoom:47%;"></p>
 <p>他这上面的操作和GitHub Desktop上面一模一样的。</p>
 <p>怎么同步呢</p>
 <p>首先在GitHub Desktop上面登陆远程仓库所在的GitHub账号 File-&gt;Options</p>
-<img src="/2024/10/04/Git/Snipaste_2024-09-11_14-55-52.jpg" style="zoom:67%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-11_14-55-52.jpg" style="zoom:67%;"></p>
 <p>然后找到<code>Clone repository</code></p>
-<img src="/2024/10/04/Git/Snipaste_2024-09-11_14-57-27.jpg" style="zoom:50%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-11_14-57-27.jpg" style="zoom:50%;"></p>
 <p>点开之后可以看到远程仓库中存在的<code>repository</code>，直接<code>Clone</code>下来就行</p>
-<img src="/2024/10/04/Git/Snipaste_2024-09-11_14-57-56.jpg" style="zoom:50%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-11_14-57-56.jpg" style="zoom:50%;"></p>
 <p>然后就可以在Client中看到了，这时候添加一个测试文件，并在软件中提交，提交上去了其实只是在本地改变了，还需要在同步到远程仓库中。点击 <code>Push origin</code>，完成之后就可以在GitHub上查看到变化了。</p>
-<img src="/2024/10/04/Git/Snipaste_2024-09-11_15-02-50.jpg" style="zoom:50%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-11_15-02-50.jpg" style="zoom:50%;"></p>
 <h6 id="1-2-4-2-Gitee"><a href="#1-2-4-2-Gitee" class="headerlink" title="1.2.4.2 Gitee"></a>1.2.4.2 Gitee</h6><p>这里和上面一样，点击仓库，然后新建一个就行</p>
-<img src="/2024/10/04/Git/Snipaste_2024-09-11_15-18-09.jpg" style="zoom:50%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-11_15-18-09.jpg" style="zoom:50%;"></p>
 <p>创建好了之后，会提供一个URL</p>
-<img src="/2024/10/04/Git/Snipaste_2024-09-11_15-23-11.jpg" style="zoom:67%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-11_15-23-11.jpg" style="zoom:67%;"></p>
 <p>然后再GitHub Desktop中，使用URL的方式 <code>Clone repository</code> 就可以了</p>
-<img src="/2024/10/04/Git/Snipaste_2024-09-11_15-24-37.jpg" style="zoom:60%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-11_15-24-37.jpg" style="zoom:60%;"></p>
 <p>创建一个新的测试文件提交到本地仓库中，然后再由本地仓库提交到远程仓库中。</p>
-<img src="/2024/10/04/Git/Snipaste_2024-09-11_15-25-35.jpg" style="zoom:60%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-11_15-25-35.jpg" style="zoom:60%;"></p>
 <p>然后可能需要输入以下Gitee的用户名和密码才能成功上传。</p>
-<h5 id="12-5-README-IGNORE"><a href="#12-5-README-IGNORE" class="headerlink" title="12.5 README &amp; IGNORE"></a>12.5 README &amp; IGNORE</h5><p>Ignore就是忽略掉某些文件，让他没必要提交到仓库中，右键就有这个选项，分为单个文件和所有XXX后缀的文件</p>
+<h5 id="12-5-README-amp-IGNORE"><a href="#12-5-README-amp-IGNORE" class="headerlink" title="12.5 README &amp; IGNORE"></a>12.5 README &amp; IGNORE</h5><p>Ignore就是忽略掉某些文件，让他没必要提交到仓库中，右键就有这个选项，分为单个文件和所有XXX后缀的文件</p>
 <h5 id="12-6-Client中的图标"><a href="#12-6-Client中的图标" class="headerlink" title="12.6 Client中的图标"></a>12.6 Client中的图标</h5><img src="/2024/10/04/Git/Snipaste_2024-09-11_15-47-01.jpg" class="">
-
 <ul>
 <li>红色减号代表将要删除文件</li>
 <li>黄色点号代表文件有修改</li>
 <li>绿色加号代表增加了这个文件</li>
 </ul>
 <h4 id="2-IDEA集成GitHub"><a href="#2-IDEA集成GitHub" class="headerlink" title="2 IDEA集成GitHub"></a>2 IDEA集成GitHub</h4><p>创建一个普通的项目，不用勾选 <code>Create Git repository</code></p>
-<img src="/2024/10/04/Git/Snipaste_2024-09-11_15-54-03.jpg" style="zoom:60%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-11_15-54-03.jpg" style="zoom:60%;"></p>
 <p>我在下面建了一个测试用的test.txt，其实有没有都行（因为我建的不是空项目）</p>
-<img src="/2024/10/04/Git/Snipaste_2024-09-11_16-06-39.jpg" style="zoom:67%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-11_16-06-39.jpg" style="zoom:67%;"></p>
 <p>然后在上面的<code>VCS</code>菜单下，找到分享到GitHub</p>
-<img src="/2024/10/04/Git/Snipaste_2024-09-11_16-07-53.jpg" style="zoom:70%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-11_16-07-53.jpg" style="zoom:70%;"></p>
 <p>点进去之后，在右下角先登陆上用户</p>
-<img src="/2024/10/04/Git/Snipaste_2024-09-11_16-10-21.jpg" style="zoom:80%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-11_16-10-21.jpg" style="zoom:80%;"></p>
 <p>在这之前需要先给IDEA配置一下Git，要不他找不到Git.exe，提交不上去，找到git.exe所在的位置，然后点以下Test按钮，看看能不能识别到</p>
-<img src="/2024/10/04/Git/Snipaste_2024-09-11_16-14-09.jpg" style="zoom:50%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-11_16-14-09.jpg" style="zoom:50%;"></p>
 <p>在下面的GitHub选项中可以管理登录的账号</p>
-<img src="/2024/10/04/Git/Snipaste_2024-09-11_16-17-15.jpg" style="zoom:57%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-11_16-17-15.jpg" style="zoom:57%;"></p>
 <p>然后呢，就能正常share了，会让选择提交的文件</p>
-<img src="/2024/10/04/Git/Snipaste_2024-09-11_16-21-31.jpg" style="zoom:67%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-11_16-21-31.jpg" style="zoom:67%;"></p>
 <p>然后就成功了</p>
-<img src="/2024/10/04/Git/Snipaste_2024-09-11_16-23-10.jpg" style="zoom:45%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-11_16-23-10.jpg" style="zoom:45%;"></p>
 <p>那修改文件怎么改呢，我现在对test.txt进行了修改，那么右键，找到Commit File…</p>
-<img src="/2024/10/04/Git/Snipaste_2024-09-11_16-25-26.jpg" style="zoom:50%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-11_16-25-26.jpg" style="zoom:50%;"></p>
 <p>选择到修改的文件，下面可以填写说明文件，下面的按钮Commit是提交到本地仓库，Commit and Push…是提交到本地仓库后再提交到GitHub</p>
-<img src="/2024/10/04/Git/Snipaste_2024-09-11_16-27-23.jpg" style="zoom:50%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-11_16-27-23.jpg" style="zoom:50%;"></p>
 <p>如果点击的Commit，后续想要更新GitHub时，右键找到Push就行</p>
-<img src="/2024/10/04/Git/Snipaste_2024-09-11_16-31-25.jpg" style="zoom:50%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-11_16-31-25.jpg" style="zoom:50%;"></p>
 <p>假如说我在GitHub将这个文件内容改了，但是对于IDEA中，却没有及时同步，这时候这里就不一样了，怎么同步呢</p>
 <p>Fetch是抓取数据，Pull是合并数据</p>
-<img src="/2024/10/04/Git/Snipaste_2024-09-11_16-35-36.jpg" style="zoom:50%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-11_16-35-36.jpg" style="zoom:50%;"></p>
 <p>点击Pull</p>
-<img src="/2024/10/04/Git/Snipaste_2024-09-11_16-37-06.jpg" style="zoom:80%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-11_16-37-06.jpg" style="zoom:80%;"></p>
 <p>之后就发现IDEA中的文件已经同步了。</p>
 <p>那要是说我是合作的，别人也想同事和我用这个项目工作怎么办，用Clone</p>
-<img src="/2024/10/04/Git/Snipaste_2024-09-11_16-39-01.jpg" style="zoom:50%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-11_16-39-01.jpg" style="zoom:50%;"></p>
 <p>之后可以找到在GitHub上的对应的项目，然后Clone就行（因为会重名所以我在下面把下载下来的名称改了）</p>
-<img src="/2024/10/04/Git/Snipaste_2024-09-11_16-39-57.jpg" style="zoom:50%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-11_16-39-57.jpg" style="zoom:50%;"></p>
 <h4 id="3-IDEA集成Gitee"><a href="#3-IDEA集成Gitee" class="headerlink" title="3 IDEA集成Gitee"></a>3 IDEA集成Gitee</h4><p>创建项目，安装gitee插件，再创建一个测试文件，还是点击VCS，登陆账号，分享到gitee，这个过程和前面一模一样</p>
 <p>剩下的也一样</p>
 <h4 id="4-版本号"><a href="#4-版本号" class="headerlink" title="4 版本号"></a>4 版本号</h4><p>为什么Git软件产生的版本号和其他的软件不太一样呢，就是Git软件是40个16进制，因为这个版本号是根据当前的内容使用SHA-1计算的，这样重复概率小，避免版本的冲突</p>
 <p>定位文件使用的是2+38的方式，前面截图中也有</p>
 <h4 id="5-文件操作"><a href="#5-文件操作" class="headerlink" title="5 文件操作"></a>5 文件操作</h4><p>如果想要在<code>.git</code>中查看文件，直接看是不行的，他都是乱码，怎么看呢</p>
-<img src="/2024/10/04/Git/Snipaste_2024-09-11_17-28-13.jpg" style="zoom:67%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-11_17-28-13.jpg" style="zoom:67%;"></p>
 <p>在这个库中右键-&gt;Open Git Bash Here，输入</p>
 <figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">cat</span><span class="operator">-file</span> <span class="literal">-p</span> 文件版本号(SHA<span class="literal">-1</span>这个)</span><br></pre></td></tr></tbody></table></figure>
-
 <p>然后就能看到一些信息，现在查到的是提交信息，还需要再查两次才能看到文件内容（不想粘图了）</p>
 <img src="/2024/10/04/Git/Snipaste_2024-09-11_17-33-15.jpg" class="">
-
 <ul>
 <li>这个tree后面的也是版本号</li>
 </ul>
 <p>至于他是怎么知道最后一次操作的，其实在.git/refs/main（分支名）中存储了最后一次操作的版本号，在切换不同的分支时，可以在HEAD文件中查到当前的分支是谁。</p>
 <p>Git基本操作原理：</p>
-<img src="/2024/10/04/Git/Snipaste_2024-09-12_15-02-34.jpg" style="zoom:67%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-12_15-02-34.jpg" style="zoom:67%;"></p>
 <h4 id="6-Git指令操作"><a href="#6-Git指令操作" class="headerlink" title="6 Git指令操作"></a>6 Git指令操作</h4><p>右键选择 Git Bash Here 就行</p>
 <h5 id="6-1-创建本地仓库"><a href="#6-1-创建本地仓库" class="headerlink" title="6.1 创建本地仓库"></a>6.1 创建本地仓库</h5><p>新建一个空的文件夹，然后在文件夹中打开 Git Bash，输入指令</p>
 <figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></tbody></table></figure>
-
-<img src="/2024/10/04/Git/Snipaste_2024-09-12_15-10-48.jpg" style="zoom:67%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-12_15-10-48.jpg" style="zoom:67%;"></p>
 <h5 id="6-2-克隆远程仓库"><a href="#6-2-克隆远程仓库" class="headerlink" title="6.2 克隆远程仓库"></a>6.2 克隆远程仓库</h5><p>在某个文件夹下，就是本地想存放的位置，打开Git Bash，输入指令</p>
 <figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone 仓库URL</span><br></pre></td></tr></tbody></table></figure>
-
 <blockquote>
 <p>这个仓库的URL可以在 GitHub / Gitee 里对应的仓库克隆上找到</p>
 </blockquote>
 <p>如果想 clone 下来之后更改名称</p>
 <figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone 仓库URL 新名称</span><br></pre></td></tr></tbody></table></figure>
-
 <h5 id="6-3-配置仓库"><a href="#6-3-配置仓库" class="headerlink" title="6.3 配置仓库"></a>6.3 配置仓库</h5><p>对仓库进行操作，他得知道我是谁，比如配置用户名和邮箱</p>
 <figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config user.name 用户名</span><br></pre></td></tr></tbody></table></figure>
-
 <figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config user.email 邮箱</span><br></pre></td></tr></tbody></table></figure>
-
 <blockquote>
 <p>上面这两个是在某个库中，与<code>.git</code>同级的目录下进行操作的</p>
 <p>其实不用命令的话，在<code>.git</code>下面的<code>config</code>文件中自己配置也行</p>
@@ -342,58 +293,43 @@
 <p>但是怎么对我本地所有的仓库进行配置呢</p>
 <p>在所有仓库都在的目录下</p>
 <figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config <span class="literal">--global</span> user.name 用户名</span><br></pre></td></tr></tbody></table></figure>
-
 <figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config <span class="literal">--global</span> user.email 邮箱</span><br></pre></td></tr></tbody></table></figure>
-
 <p>这个全局配置可以在C盘中的用户下面的<code>.gitconfig</code>文件中进行修改</p>
 <h5 id="6-4-文件操作"><a href="#6-4-文件操作" class="headerlink" title="6.4 文件操作"></a>6.4 文件操作</h5><p>下面提到的文件名都是带后缀的</p>
 <p>查看当前库中文件的状态</p>
 <figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></tbody></table></figure>
-
 <p>将文件从工作区放到暂存区做比对操作（文件所在目录）</p>
 <figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add 文件名</span><br></pre></td></tr></tbody></table></figure>
-
 <p>全部提交某种类型的文件到暂存区</p>
 <figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add *.txt(文件类型)</span><br></pre></td></tr></tbody></table></figure>
-
 <p>将提交到暂存区的文件再拿回到工作区（逻辑上的移动）</p>
 <figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">rm</span> <span class="literal">--cached</span> 文件名</span><br></pre></td></tr></tbody></table></figure>
-
 <p>将暂存区的文件提交到存储区</p>
 <figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit <span class="literal">-m</span> 说明文字</span><br></pre></td></tr></tbody></table></figure>
-
 <blockquote>
 <p>-m 指的是消息，对这个操作有啥说明</p>
 </blockquote>
 <p>查看历史操作</p>
 <figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br></pre></td></tr></tbody></table></figure>
-
 <p>一行来显示</p>
 <figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log <span class="literal">--oneline</span></span><br></pre></td></tr></tbody></table></figure>
-
 <blockquote>
 <p>版本号不会全显示出来，只会显示前七位，和GitHub Desktop中一样了</p>
 </blockquote>
 <p>查看某个版本之前的操作</p>
 <figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log 版本号</span><br></pre></td></tr></tbody></table></figure>
-
 <p>删除文件的本质还是提交，都是add之后再commit</p>
 <p>如果误删除了怎么办，假如说我把一个文件提交到了存储区，然后我在工作区误删除了，由于存储区中有，我可以把它再恢复给我</p>
 <figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git restore 文件名</span><br></pre></td></tr></tbody></table></figure>
-
 <p>如果我删除之后我提交了这个删除，那么这样就恢复不了了，因为存储区域也没有</p>
 <p>但是因为存在log，记录了每次操作的版本号，可以先查到某次操作的版本号，然后恢复到那时候</p>
 <figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br><span class="line"></span><br><span class="line">git reset <span class="literal">--hard</span> 版本号</span><br></pre></td></tr></tbody></table></figure>
-
 <p>但是这样有个问题，会有提交的log丢失，因为我恢复到某个时间节点了，怎么不丢失呢，使用还原</p>
 <figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git revert 版本号</span><br></pre></td></tr></tbody></table></figure>
-
 <img src="/2024/10/04/Git/Snipaste_2024-09-12_15-51-25.jpg" class="">
-
 <p>这里需要注意的是，我想要恢复 aaa 这次的文件，我<code>revert</code>跟的版本号应该是<code>20eb1ef</code>，而不是aaa对应的这个，因为我要还原到这个dddd之前，其实等同于创建了一个新的提交，把 aaa 又重新提交了一份。</p>
 <h5 id="6-5-分支操作"><a href="#6-5-分支操作" class="headerlink" title="6.5 分支操作"></a>6.5 分支操作</h5><p>创建分支</p>
 <figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch 分支名</span><br></pre></td></tr></tbody></table></figure>
-
 <blockquote>
 <p>这里有一个问题就是使用git init创建库的话，第一次创建时，主分支是名存实亡的，只有存在了提交操作commit之后，才会真正的创建。若没有这个主分支，上面命令会报错</p>
 <p><code>fatal : not a valid object name: 'master'</code></p>
@@ -401,55 +337,84 @@
 </blockquote>
 <p>查看所有分支</p>
 <figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch <span class="literal">-v</span></span><br></pre></td></tr></tbody></table></figure>
-
 <p>切换当前分支</p>
 <figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout 分支名</span><br></pre></td></tr></tbody></table></figure>
-
 <p>创建的同时切换过去</p>
 <figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkot <span class="literal">-b</span> 分支名</span><br></pre></td></tr></tbody></table></figure>
-
 <p>删除分支</p>
 <figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch <span class="literal">-d</span> 分支名</span><br></pre></td></tr></tbody></table></figure>
-
 <p>分支合并，注意要先切换到主分支</p>
 <figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge 分支名</span><br></pre></td></tr></tbody></table></figure>
-
 <blockquote>
 <p>上面的指的是被合并的一方，就是其他分支</p>
 </blockquote>
 <p>若是存在文件冲突，它会提示文件名，这时候人工看一下，修改一下，然后再把这个冲突的文件提交一下（add-&gt;commit）就行了。</p>
 <h5 id="6-6-标签"><a href="#6-6-标签" class="headerlink" title="6.6 标签"></a>6.6 标签</h5><p>标签类似于为这次的操作取个名字(别名)</p>
 <figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag 标签名 版本号</span><br></pre></td></tr></tbody></table></figure>
-
 <p>这时候我使用下面的指令就可以找到这次之前的操作，而不用再复制那么长的版本号了</p>
 <figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag 标签名</span><br></pre></td></tr></tbody></table></figure>
-
 <p>标签不能重复</p>
 <p>删除标签</p>
 <figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag <span class="literal">-d</span> 标签名</span><br></pre></td></tr></tbody></table></figure>
-
 <p>也可以为分支取别名，就相当于为这个标签所在的提交进行分支创建</p>
 <figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout <span class="literal">-b</span> 标签名</span><br></pre></td></tr></tbody></table></figure>
-
 <h5 id="6-7-远程仓库"><a href="#6-7-远程仓库" class="headerlink" title="6.7 远程仓库"></a>6.7 远程仓库</h5><p>可以在config文件中找到remote标签，这里的url就是远程仓库的地址</p>
-<img src="/2024/10/04/Git/Snipaste_2024-09-12_19-05-56.jpg" style="zoom:50%;">
-
+<p><img src="/2024/10/04/Git/Snipaste_2024-09-12_19-05-56.jpg" style="zoom:50%;"></p>
 <p>可以在这里面修改，也可以指令修改，还有remove和rename指令，需要再看吧</p>
 <figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin 地址</span><br></pre></td></tr></tbody></table></figure>
-
 <p>上传到远程仓库</p>
 <figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin </span><br></pre></td></tr></tbody></table></figure>
-
 <p>使用SSH的话需要先生成安全证书，位置默认存放在本及用户的.ssh文件夹中，前提是origin配置的url是SSH的，不是HTTPS</p>
 <p>的，要不然用不到这几步</p>
 <figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh <span class="literal">-keygen</span> <span class="literal">-t</span> rsa <span class="literal">-C</span>[<span class="type">SSH</span>地址]</span><br></pre></td></tr></tbody></table></figure>
-
 <blockquote>
 <p>注意[]这个只是我的标识，实际上没有这个，-C和SSH地址之间没有空格</p>
 </blockquote>
 <p>生成之后，找到他，复制，粘贴到Gitee的设置中的SSH公钥部分</p>
 <p>本地仓库怎么同步更新呢</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin</span><br></pre></td></tr></tbody></table></figure>
-
 <h4 id="7-GitLab"><a href="#7-GitLab" class="headerlink" title="7 GitLab"></a>7 GitLab</h4><p>自己的代码托管平台，运行在Linux中的，我直接没看了，以后学Linux再说吧</p>
-<h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">expAddThree</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2024/10/04/Git/">http://example.com/2024/10/04/Git/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">LXY's Notes</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Git/">Git</a></div><div class="post-share"><div class="social-share" data-image="/img/kanna.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer=""></script></div></div><nav class="pagination-post" id="pagination"><a class="prev-post pull-left" href="/2024/10/04/spring-MyBatis-Gradle/" title="spring+MyBatis+Gradle"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">spring+MyBatis+Gradle</div></div></a><a class="next-post pull-right" href="/2024/10/04/Linux%E5%AD%A6%E4%B9%A0/" title="Linux"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Linux</div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info is-center"><div class="avatar-img"><img src="/img/kanna.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="author-info-name">expAddThree</div><div class="author-info-description">5L2g5aW977yBCg==</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">26</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/expAdd3"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="mailto:lixybupt@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">An announcement means no announcement! (^_^)</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E8%BD%AF%E4%BB%B6-Git"><span class="toc-text">分布式版本控制软件 Git</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Git%E6%A6%82%E8%BF%B0"><span class="toc-text">1 Git概述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6"><span class="toc-text">1.1 版本控制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-GitHub-Desktop%E4%BD%BF%E7%94%A8"><span class="toc-text">1.2 GitHub Desktop使用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-1-%E5%88%9B%E5%BB%BA%E5%88%A0%E9%99%A4%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93"><span class="toc-text">1.2.1 创建删除本地仓库</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-2-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="toc-text">1.2.2 文件操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-3-%E5%88%86%E6%94%AF%E6%93%8D%E4%BD%9C"><span class="toc-text">1.2.3 分支操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-4-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="toc-text">1.2.4 远程仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-2-4-1-GitHub"><span class="toc-text">1.2.4.1 GitHub</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#1-2-4-2-Gitee"><span class="toc-text">1.2.4.2 Gitee</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#12-5-README-IGNORE"><span class="toc-text">12.5 README &amp; IGNORE</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#12-6-Client%E4%B8%AD%E7%9A%84%E5%9B%BE%E6%A0%87"><span class="toc-text">12.6 Client中的图标</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-IDEA%E9%9B%86%E6%88%90GitHub"><span class="toc-text">2 IDEA集成GitHub</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-IDEA%E9%9B%86%E6%88%90Gitee"><span class="toc-text">3 IDEA集成Gitee</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E7%89%88%E6%9C%AC%E5%8F%B7"><span class="toc-text">4 版本号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="toc-text">5 文件操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-Git%E6%8C%87%E4%BB%A4%E6%93%8D%E4%BD%9C"><span class="toc-text">6 Git指令操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#6-1-%E5%88%9B%E5%BB%BA%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93"><span class="toc-text">6.1 创建本地仓库</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-2-%E5%85%8B%E9%9A%86%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="toc-text">6.2 克隆远程仓库</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-3-%E9%85%8D%E7%BD%AE%E4%BB%93%E5%BA%93"><span class="toc-text">6.3 配置仓库</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-4-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="toc-text">6.4 文件操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-5-%E5%88%86%E6%94%AF%E6%93%8D%E4%BD%9C"><span class="toc-text">6.5 分支操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-6-%E6%A0%87%E7%AD%BE"><span class="toc-text">6.6 标签</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-7-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="toc-text">6.7 远程仓库</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-GitLab"><span class="toc-text">7 GitLab</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#END"><span class="toc-text">END</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/04/JDK%2017-Spring6-Tomcat10-Thymeleaf%E6%95%B4%E5%90%88%E4%B8%8E%E6%B5%8B%E8%AF%95/" title="JDK 17-Spring6-Tomcat10-Thymeleaf整合与测试.md">JDK 17-Spring6-Tomcat10-Thymeleaf整合与测试.md</a><time datetime="2024-10-04T11:55:33.000Z" title="发表于 2024-10-04 19:55:33">2024-10-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/04/Spring%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/" title="Spring代理模式">Spring代理模式</a><time datetime="2024-10-04T11:54:38.000Z" title="发表于 2024-10-04 19:54:38">2024-10-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/04/%E5%B0%9A%E7%A1%85%E8%B0%B7Spring6%E7%AC%94%E8%AE%B02023/" title="尚硅谷Spring6笔记2023">尚硅谷Spring6笔记2023</a><time datetime="2024-10-04T11:52:42.000Z" title="发表于 2024-10-04 19:52:42">2024-10-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/04/%E5%B0%9A%E7%A1%85%E8%B0%B7SpringMVC%E7%AC%94%E8%AE%B02021/" title="尚硅谷SpringMVC笔记2021">尚硅谷SpringMVC笔记2021</a><time datetime="2024-10-04T11:49:08.000Z" title="发表于 2024-10-04 19:49:08">2024-10-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/04/%E6%AF%94%E7%89%B9%E5%B8%81%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB%20%E7%AC%AC%E5%85%AB%E7%AB%A0%20%E6%B6%88%E6%81%AF%E5%A4%84%E7%90%86/" title="比特币源码解读 第八章 消息处理">比特币源码解读 第八章 消息处理</a><time datetime="2024-10-04T11:38:30.000Z" title="发表于 2024-10-04 19:38:30">2024-10-04</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent;"><div id="footer-wrap"><div class="copyright">©2019 - 2024 By expAddThree</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+<h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">expAddThree</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2024/10/04/Git/">http://example.com/2024/10/04/Git/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">LXY's Notes</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Git/">Git</a></div><div class="post-share"><div class="social-share" data-image="/img/kanna.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer=""></script></div></div><nav class="pagination-post" id="pagination"><a class="prev-post pull-left" href="/2024/10/04/spring-MyBatis-Gradle/" title="spring+MyBatis+Gradle"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">spring+MyBatis+Gradle</div></div></a><a class="next-post pull-right" href="/2024/10/04/Linux%E5%AD%A6%E4%B9%A0/" title="Linux"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Linux</div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info is-center"><div class="avatar-img"><img src="/img/kanna.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="author-info-name">expAddThree</div><div class="author-info-description">5L2g5aW977yBCg==</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">26</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/expAdd3"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="mailto:lixybupt@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">An announcement means no announcement! (^_^)</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E8%BD%AF%E4%BB%B6-Git"><span class="toc-text">分布式版本控制软件 Git</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Git%E6%A6%82%E8%BF%B0"><span class="toc-text">1 Git概述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6"><span class="toc-text">1.1 版本控制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-GitHub-Desktop%E4%BD%BF%E7%94%A8"><span class="toc-text">1.2 GitHub Desktop使用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-1-%E5%88%9B%E5%BB%BA%E5%88%A0%E9%99%A4%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93"><span class="toc-text">1.2.1 创建删除本地仓库</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-2-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="toc-text">1.2.2 文件操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-3-%E5%88%86%E6%94%AF%E6%93%8D%E4%BD%9C"><span class="toc-text">1.2.3 分支操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-4-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="toc-text">1.2.4 远程仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-2-4-1-GitHub"><span class="toc-text">1.2.4.1 GitHub</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#1-2-4-2-Gitee"><span class="toc-text">1.2.4.2 Gitee</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#12-5-README-amp-IGNORE"><span class="toc-text">12.5 README &amp; IGNORE</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#12-6-Client%E4%B8%AD%E7%9A%84%E5%9B%BE%E6%A0%87"><span class="toc-text">12.6 Client中的图标</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-IDEA%E9%9B%86%E6%88%90GitHub"><span class="toc-text">2 IDEA集成GitHub</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-IDEA%E9%9B%86%E6%88%90Gitee"><span class="toc-text">3 IDEA集成Gitee</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E7%89%88%E6%9C%AC%E5%8F%B7"><span class="toc-text">4 版本号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="toc-text">5 文件操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-Git%E6%8C%87%E4%BB%A4%E6%93%8D%E4%BD%9C"><span class="toc-text">6 Git指令操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#6-1-%E5%88%9B%E5%BB%BA%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93"><span class="toc-text">6.1 创建本地仓库</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-2-%E5%85%8B%E9%9A%86%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="toc-text">6.2 克隆远程仓库</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-3-%E9%85%8D%E7%BD%AE%E4%BB%93%E5%BA%93"><span class="toc-text">6.3 配置仓库</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-4-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="toc-text">6.4 文件操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-5-%E5%88%86%E6%94%AF%E6%93%8D%E4%BD%9C"><span class="toc-text">6.5 分支操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-6-%E6%A0%87%E7%AD%BE"><span class="toc-text">6.6 标签</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-7-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="toc-text">6.7 远程仓库</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-GitLab"><span class="toc-text">7 GitLab</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#END"><span class="toc-text">END</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/04/JDK%2017-Spring6-Tomcat10-Thymeleaf%E6%95%B4%E5%90%88%E4%B8%8E%E6%B5%8B%E8%AF%95/" title="JDK 17-Spring6-Tomcat10-Thymeleaf整合与测试.md">JDK 17-Spring6-Tomcat10-Thymeleaf整合与测试.md</a><time datetime="2024-10-04T11:55:33.000Z" title="发表于 2024-10-04 19:55:33">2024-10-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/04/Spring%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/" title="Spring代理模式">Spring代理模式</a><time datetime="2024-10-04T11:54:38.000Z" title="发表于 2024-10-04 19:54:38">2024-10-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/04/%E5%B0%9A%E7%A1%85%E8%B0%B7Spring6%E7%AC%94%E8%AE%B02023/" title="尚硅谷Spring6笔记2023">尚硅谷Spring6笔记2023</a><time datetime="2024-10-04T11:52:42.000Z" title="发表于 2024-10-04 19:52:42">2024-10-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/04/%E5%B0%9A%E7%A1%85%E8%B0%B7SpringMVC%E7%AC%94%E8%AE%B02021/" title="尚硅谷SpringMVC笔记2021">尚硅谷SpringMVC笔记2021</a><time datetime="2024-10-04T11:49:08.000Z" title="发表于 2024-10-04 19:49:08">2024-10-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/04/%E6%AF%94%E7%89%B9%E5%B8%81%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB%20%E7%AC%AC%E5%85%AB%E7%AB%A0%20%E6%B6%88%E6%81%AF%E5%A4%84%E7%90%86/" title="比特币源码解读 第八章 消息处理">比特币源码解读 第八章 消息处理</a><time datetime="2024-10-04T11:38:30.000Z" title="发表于 2024-10-04 19:38:30">2024-10-04</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent;"><div id="footer-wrap"><div class="copyright">©2019 - 2024 By expAddThree</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+      
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script></div><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
