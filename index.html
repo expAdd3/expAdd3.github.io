@@ -1,1329 +1,161 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  
-  <title>Welcome to My Blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Welcome to My Blog</title><meta name="author" content="expAddThree"><meta name="copyright" content="expAddThree"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
 <meta property="og:title" content="Welcome to My Blog">
 <meta property="og:url" content="http://example.com/index.html">
 <meta property="og:site_name" content="Welcome to My Blog">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/butterfly-icon.png">
 <meta property="article:author" content="expAddThree">
 <meta property="article:tag" content="tang">
 <meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Welcome to My Blog" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+<meta name="twitter:image" content="http://example.com/img/butterfly-icon.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
 
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        if (name && globalFn[key][name]) return
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
   
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
     
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
   
-  
-<meta name="generator" content="Hexo 7.3.0"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Welcome to My Blog</a>
-      </h1>
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Welcome to My Blog',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2024-10-04 13:32:53'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Welcome to My Blog</span></a></span><div id="menus"></div></nav><div id="site-info"><h1 id="site-title">Welcome to My Blog</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/10/04/Linux/" title="Linux">Linux</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-10-04T04:55:52.000Z" title="发表于 2024-10-04 12:55:52">2024-10-04</time></span></div><div class="content">Linux学习 CentOS账户：    账号 密码    root root   lxy root    Linux内存一般分为3个区  boot分区 swap交换区（可以临时充当内存） 根分区  1 Linux目录结构Linux的文件系统采用级层式的树状目录结构，在此结构中的最上层是根目录 “ &#x2F; “ ，然后在此目录下再创建其他的目录 在Linux世界里，一切皆文件   根目录下面的目录名称是规定好的 Linux会把计算机的硬件映射成文件来管理 具体的目录结构（要知道）  /bin (/usr/bin、/usr/local/bin) Binary的缩写，该目录下存放着最经常使用的命令 /sbin (/usr/sbin、/usr/local/sbin)  s就是Super User的意思，该目录下存放的是系统管理员使用的系统管理程序 /home 存放普通用户的主目录，在Linux中每个用户都有一个自己的目录，一般该目录名是以用户的账号命名 /root 该目录为系统管理员，也称作超级权限者的用户主目录 /lib...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/10/01/hello-world/" title="Hello World">Hello World</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-10-01T05:47:40.186Z" title="发表于 2024-10-01 13:47:40">2024-10-01</time></span></div><div class="content">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;  More info: Writing Run server1$ hexo server  More info: Server Generate static files1$ hexo generate  More info: Generating Deploy to remote sites1$ hexo deploy  More info: Deployment </div></div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info is-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">expAddThree</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/04/Linux/" title="Linux">Linux</a><time datetime="2024-10-04T04:55:52.000Z" title="发表于 2024-10-04 12:55:52">2024-10-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/01/hello-world/" title="Hello World">Hello World</a><time datetime="2024-10-01T05:47:40.186Z" title="发表于 2024-10-01 13:47:40">2024-10-01</time></div></div></div></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/Linux/" style="font-size: 1.1em; color: #999">Linux</a> <a href="/tags/OS/" style="font-size: 1.1em; color: #999">OS</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
       
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-        
-          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main">
+    <ul class="card-archive-list">
   
-    <article id="post-Linux" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/10/04/Linux/" class="article-date">
-  <time class="dt-published" datetime="2024-10-04T04:55:52.000Z" itemprop="datePublished">2024-10-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/10/04/Linux/">Linux</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="Linux学习"><a href="#Linux学习" class="headerlink" title="Linux学习"></a>Linux学习</h3><hr>
-<p>CentOS账户：</p>
-<table>
-<thead>
-<tr>
-<th>账号</th>
-<th>密码</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>root</td>
-<td>root</td>
-</tr>
-<tr>
-<td>lxy</td>
-<td>root</td>
-</tr>
-</tbody></table>
-<hr>
-<p>Linux内存一般分为3个区</p>
-<ul>
-<li>boot分区</li>
-<li>swap交换区（可以临时充当内存）</li>
-<li>根分区</li>
-</ul>
-<h4 id="1-Linux目录结构"><a href="#1-Linux目录结构" class="headerlink" title="1 Linux目录结构"></a>1 Linux目录结构</h4><p>Linux的文件系统采用级层式的树状目录结构，在此结构中的最上层是根目录 “ &#x2F; “ ，然后在此目录下再创建其他的目录</p>
-<p><strong>在Linux世界里，一切皆文件</strong></p>
-<img src="/2024/10/04/Linux/image-103143.jpg" class="">
-
-<p>根目录下面的目录名称是规定好的</p>
-<p>Linux会把计算机的硬件映射成文件来管理</p>
-<p>具体的目录结构（要知道）</p>
-<ul>
-<li><code>/bin</code> (<code>/usr/bin、/usr/local/bin</code>) Binary的缩写，该目录下存放着最经常使用的命令</li>
-<li><code>/sbin</code> (<code>/usr/sbin、/usr/local/sbin</code>)  s就是Super User的意思，该目录下存放的是系统管理员使用的系统管理程序</li>
-<li><code>/home</code> 存放普通用户的主目录，在Linux中每个用户都有一个自己的目录，一般该目录名是以用户的账号命名</li>
-<li><code>/root</code> 该目录为系统管理员，也称作超级权限者的用户主目录</li>
-<li><code>/lib</code> 系统开机所需要最基本的动态连接共享库，起作用类似于Windows里的DLL文件，几乎所有的应用程序都需要用到这些共享库</li>
-<li><code>/lost+found</code> 这个目录一般是空的，系统非法关机后，这里就存放了一些文件</li>
-<li><code>/etc</code> 所有的系统管理所需要的配置文件和子目录，比如安装mysql数据库 my.conf</li>
-<li><code>/usr</code> 这是一个非常重要的目录，用户的很多应用程序和文件都在这个目录下，类似于Windows下的program files目录</li>
-<li><code>/boot</code> 存放的是启动Linux使用的一些核心文件，包括一些连接文件以及镜像文件</li>
-<li><code>/proc</code> 这个目录是一个虚拟的目录，是系统内存的映射，访问这个目录来获取系统信息（不能动）</li>
-<li><code>/srv</code> service的缩写，该目录存放一些服务启动之后需要提取的数据（不能动）</li>
-<li><code>/sys</code> 是Linux2.6 内核的一个很大变化，该目录下安装了2.6内核中新出现的一个文件系统<code>sysfs</code>（不能动）</li>
-<li><code>/tmp</code> 该目录用来存放一些临时文件</li>
-<li><code>/dev</code> 类似于Windows的设备管理器，把所有的硬件用文件的形式存储</li>
-<li><code>/media</code> Linux系统会自动识别一些设备，比如U盘、光驱等等，当识别后，Linux会把识别的设备挂载到这个目录下</li>
-<li><code>/mnt</code> 系统提供该目录是为了让用户临时挂载别的文件系统的，比如可以将外部的存储挂载在<code>/mnt/</code>上（共享文件夹啥的），然后再该目录下就可以查看</li>
-<li><code>/opt</code> 给主机额外安装软件所摆放的目录，如安装ORACLE数据库就可以放到这个目录下，默认为空</li>
-<li><code>/usr/local</code> 另一个给主机额外安装软件所摆放的目录，一般是通过编译源码方式安装的程序。</li>
-<li><code>/var</code> 这个目录中存放着不断扩充着的东西，习惯将经常被修改的目录放在这个目录下。包括各种日志文件。</li>
-<li><code>/selinux</code> 也就是security-enhanced linux SELinux是一种安全子系统，它能控制程序只能访问特定文件，有三种工作模式，可以自行设置</li>
-</ul>
-<h4 id="2-Linux远程登陆"><a href="#2-Linux远程登陆" class="headerlink" title="2 Linux远程登陆"></a>2 Linux远程登陆</h4><p>设置一个快速打开Terminal</p>
-<img src="/2024/10/04/Linux/Snipaste_2024-09-13_11-08-35.jpg"  style="zoom:50%;" />
-
-<p>可以使用Xshell（远程连接输入命令）和Xftp（文件操作）进行远程操作</p>
-<p>看一下自己Linux的IP</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
-
-<p>IP为：192.168.17.139，Windows这边ping一下试试，可以ping通</p>
-<h5 id="2-1-Xshell"><a href="#2-1-Xshell" class="headerlink" title="2.1 Xshell"></a>2.1 Xshell</h5><p>打开Xshell 新建会话，写入IP啥的，然后确定就行了</p>
-<img src="/2024/10/04/Linux/Snipaste_2024-09-13_11-15-42.jpg"  style="zoom:80%;" />
-
-<p>尝试连接时，会有一个SSH安全警告，一次性接受就是下次还要输入用户名密码，接受并保存是直接连接了</p>
-<img src="/2024/10/04/Linux/Snipaste_2024-09-13_11-17-41.jpg"  style="zoom:60%;" />
-
-<p>输入用户名密码后就进来了</p>
-<img src="/2024/10/04/Linux/Snipaste_2024-09-13_11-20-00.jpg"  style="zoom:80%;" />
-
-<h5 id="2-2-Xftp"><a href="#2-2-Xftp" class="headerlink" title="2.2 Xftp"></a>2.2 Xftp</h5><p>打开Xftp新建，输入IP啥的</p>
-<img src="/2024/10/04/Linux/Snipaste_2024-09-13_11-24-07.jpg"  style="zoom:80%;" />
-
-<p>后续步骤一样，就进来了，左侧Windows，右侧Linux，上面圈出来的地方可以改编码，避免右侧显示乱码</p>
-<img src="/2024/10/04/Linux/Snipaste_2024-09-13_11-25-44.jpg" class="">
-
-<h4 id="3-vi和vim编辑器"><a href="#3-vi和vim编辑器" class="headerlink" title="3 vi和vim编辑器"></a>3 vi和vim编辑器</h4><p>vi 是 Linux 内置的文本编辑器</p>
-<p>Vim 具有程序编辑的能力，可以看作是 Vi 的增强版本，可以主动的以字体颜色辨别语法的正确性，方便程序设计。它的代码补全、编译以及错误跳转等功能也很丰富。</p>
-<h5 id="3-1-vi和vim的三种模式"><a href="#3-1-vi和vim的三种模式" class="headerlink" title="3.1 vi和vim的三种模式"></a>3.1 vi和vim的三种模式</h5><ul>
-<li>正常模式<br>以vim打开一个档案就直接进入一般模式了（默认的），可以使用“上下左右”按键来移动光标，可以使用“删除字符”或者是“删除整行”来处理档案内容，也可以使用“复制粘贴”来处理文件数据</li>
-<li>插入模式<br>按下i,I,o,O,a,A,r,R等任一个字母之后才会进入编辑模式，一般来说按 i </li>
-<li>命令行模式<br>在这个模式中，可以提供相关指令，该模式可以完成读取、存盘、替换、离开vim、显示行号等的动作</li>
-</ul>
-<p>使用Xshell演示（因为说是实际这个用的多，不直接在Linux上操作）创建一个简单的java程序</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim Hello.java</span><br></pre></td></tr></table></figure>
-
-<p>输入 i 开始编写</p>
-<img src="/2024/10/04/Linux/Snipaste_2024-09-13_11-40-54.jpg" class="">
-
-<p>编写完了之后按一下” esc “ 再输入 “ :wq “ 由插入模式转到命令行模式</p>
-<p>vim模式转换过程</p>
-<img src="/2024/10/04/Linux/Snipaste_2024-09-13_12-50-30.jpg"  style="zoom:67%;" />
-
-<h5 id="3-2-vi和vim快捷键"><a href="#3-2-vi和vim快捷键" class="headerlink" title="3.2 vi和vim快捷键"></a>3.2 vi和vim快捷键</h5><p>这里输入数字不要用右侧键盘，会有点问题</p>
-<ol>
-<li><p>拷贝当前行（正常模式下的）</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yy</span><br></pre></td></tr></table></figure>
-
-<p>拷贝当前行向下的5行，</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">5</span>yy</span><br></pre></td></tr></table></figure>
-
-<p>粘贴</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>删除当前行（正常模式下的）</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dd</span><br></pre></td></tr></table></figure>
-
-<p>删除当前行向下的5行</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">5</span>dd</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在文件中查找某个单词</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/ 查找词</span><br><span class="line">n</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>注意是先输入” &#x2F; “，正常模式下</li>
-<li>n是查找下一个</li>
-<li>查找别的直接就再次输入” &#x2F; “就好了，会覆盖掉上次的查找指令</li>
-</ul>
-</li>
-<li><p>设置文件的行号（正常模式下）</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:<span class="built_in">set</span> nu</span><br></pre></td></tr></table></figure>
-
-<p>取消文件的行号</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:<span class="built_in">set</span> nonu</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>定位到文件最末行（正常模式下）</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">G</span><br></pre></td></tr></table></figure>
-
-<p>定位到首行</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gg</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>撤回操作（类似于Windows下面的 Ctrl + z）</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">u</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>进入编辑模式后我发现我想撤回，按下 ESC，输入u就行了</li>
-</ul>
-</li>
-<li><p>光标快速移动，在一般模式下输入行数，比如20，然后按 shift + g</p>
-</li>
-</ol>
-<h4 id="4-Linux开机、重启"><a href="#4-Linux开机、重启" class="headerlink" title="4 Linux开机、重启"></a>4 Linux开机、重启</h4><p>命令行操作</p>
-<p>立即关机，h指的是halt</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shutdown <span class="literal">-h</span> now </span><br></pre></td></tr></table></figure>
-
-<p>1分钟后关机，下面两种都是</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">shutdown <span class="literal">-h</span> <span class="number">1</span></span><br><span class="line">shutdown</span><br></pre></td></tr></table></figure>
-
-<p>立刻重启计算机，r指的是reboot</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shutdown <span class="literal">-r</span> now</span><br></pre></td></tr></table></figure>
-
-<p>把内存数据同步到磁盘</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sync</span><br></pre></td></tr></table></figure>
-
-<p>注意：无论是重启还是关机，首先要运行<code>sync</code>命令，把内存中的数据写到磁盘中</p>
-<h4 id="5-用户登录、注销"><a href="#5-用户登录、注销" class="headerlink" title="5 用户登录、注销"></a>5 用户登录、注销</h4><p>登陆少用<code>root</code>账号登陆，系统管理员权限最大，要避免操作失误，可以使用普通用户登录，登陆后再切换到管理员</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su - 用户名</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>这个用户名是<code>root</code>的用户名</li>
-<li>注意”-“前后的空格</li>
-</ul>
-<p>注销操作：</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logout</span><br></pre></td></tr></table></figure>
-
-<img src="/2024/10/04/Linux/Snipaste_2024-09-13_17-36-46.jpg" class="">
-
-<p>需要注意的是：在shell中输入logout才可以注销用户，他在运行级别3以下有效</p>
-<p>就是说在shell中，使用logout可以注销用户，如上图，但是在图形界面中(Linux主机中)，只能退到普通用户这里，普通用户是无法再退出的，如下图</p>
-<img src="/2024/10/04/Linux/Snipaste_2024-09-13_17-41-06.jpg"  style="zoom:80%;" />
-
-<h4 id="6-用户管理"><a href="#6-用户管理" class="headerlink" title="6 用户管理"></a>6 用户管理</h4><h5 id="6-1-创建用户"><a href="#6-1-创建用户" class="headerlink" title="6.1 创建用户"></a>6.1 创建用户</h5><p>Linux系统是一个多用户多任务的操作系统，任何一个要使用系统资源的用户，都必须首先向系统管理员申请一个账号，再利用账号进入系统</p>
-<p>添加用户，默认家目录在 <code>/home/新建用户名</code>下</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd 用户名</span><br></pre></td></tr></table></figure>
-
-<p>当用户创建成功后，会自动创建和用户同名的家目录</p>
-<p>创建用户时指定家目录位置</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd <span class="literal">-d</span> 路径（比如/home/john）用户名</span><br></pre></td></tr></table></figure>
-
-<h5 id="6-2-指定-修改密码"><a href="#6-2-指定-修改密码" class="headerlink" title="6.2 指定&#x2F;修改密码"></a>6.2 指定&#x2F;修改密码</h5><p>指定（修改）密码</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd 用户名</span><br></pre></td></tr></table></figure>
-
-<p>这个用户名一定要写，要不然默认给当前登录的用户修改密码</p>
-<p>显示当前在哪个目录下面</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">pwd</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="6-3-删除用户"><a href="#6-3-删除用户" class="headerlink" title="6.3 删除用户"></a>6.3 删除用户</h5><p>删除用户，但是保留家目录</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">userdel 用户名</span><br></pre></td></tr></table></figure>
-
-<p>自己删不掉自己，权限不够</p>
-<p>删除用户，全部删除信息</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">userdel <span class="literal">-r</span> 用户名</span><br></pre></td></tr></table></figure>
-
-<h5 id="6-4-查询用户信息"><a href="#6-4-查询用户信息" class="headerlink" title="6.4 查询用户信息"></a>6.4 查询用户信息</h5><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id 用户名</span><br></pre></td></tr></table></figure>
-
-<h5 id="6-5-切换用户"><a href="#6-5-切换用户" class="headerlink" title="6.5 切换用户"></a>6.5 切换用户</h5><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su - 用户名</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>从权限高的用户切换到权限低的用户，不需要输入密码，反之则需要</li>
-<li>当需要返回原来的用户时，要使用<code>exit</code> 或者 <code>logout</code></li>
-</ul>
-<h5 id="6-6-查看当前用户-登录用户"><a href="#6-6-查看当前用户-登录用户" class="headerlink" title="6.6 查看当前用户&#x2F;登录用户"></a>6.6 查看当前用户&#x2F;登录用户</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">whoami          只有名字</span><br><span class="line">who am i        更详细点</span><br></pre></td></tr></table></figure>
-
-<p>注意，他显示的是第一次登陆的信息，即使过程中使用 <code>su</code>变更了用户，查到的也是最开始的</p>
-<h5 id="6-7-用户组"><a href="#6-7-用户组" class="headerlink" title="6.7 用户组"></a>6.7 用户组</h5><p>类似于角色，系统可以对有共性&#x2F;权限的多个用户进行统一的管理。</p>
-<p>新增组</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">groupadd 组名</span><br></pre></td></tr></table></figure>
-
-<p>删除组</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">groupdel 组名</span><br></pre></td></tr></table></figure>
-
-<p>增加用户时直接加上组，这个的前提是有这个组</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd <span class="literal">-g</span> 用户组 用户名</span><br></pre></td></tr></table></figure>
-
-<p>如果增加用户没有指定组，那么会默认生成与该用户用户名相同的一个组，并把用户放在这个组中</p>
-<p>修改用户的组</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod <span class="literal">-g</span> 用户组 用户名</span><br></pre></td></tr></table></figure>
-
-<p>在<code>/etc/passwd</code>文件中，存放用户的配置文件，记录用户的各种信息</p>
-<p>记录格式：</p>
-<blockquote>
-<p>用户名：口令：用户标识号：组标识号：注释性描述：主目录：登录Shell</p>
-</blockquote>
-<p>比如</p>
-<img src="/2024/10/04/Linux/Snipaste_2024-09-13_19-12-01.jpg" class="">
-
-<p>什么是登录Shell呢，解释一下</p>
-<img src="/2024/10/04/Linux/Snipaste_2024-09-13_19-10-21.jpg"  style="zoom:60%;" />
-
-<p><code>/etc/shadow</code>文件是口令的配置文件</p>
-<p>记录格式：</p>
-<blockquote>
-<p>登录名：加密口令：最后一次修改时间：最小时间间隔：最大时间间隔：警告时间：不活动时间：失效时间：配置时间</p>
-</blockquote>
-<img src="/2024/10/04/Linux/Snipaste_2024-09-13_19-16-24.jpg" class="">
-
-<p><code>/etc/group</code>是组的配置文件，记录Linux包含的组的信息</p>
-<p>记录格式：</p>
-<blockquote>
-<p>组名：口令：组标识号：组内用户列表</p>
-</blockquote>
-<img src="/2024/10/04/Linux/Snipaste_2024-09-13_19-18-46.jpg"  style="zoom:150%;" />
-
-<h4 id="7-运行级别"><a href="#7-运行级别" class="headerlink" title="7 运行级别"></a>7 运行级别</h4><p>运行级别说明</p>
-<table>
-<thead>
-<tr>
-<th>级别</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>0</td>
-<td>关机</td>
-</tr>
-<tr>
-<td>1</td>
-<td>单用户【可以找回丢失密码】</td>
-</tr>
-<tr>
-<td>2</td>
-<td>多用户状态没有网络服务</td>
-</tr>
-<tr>
-<td>3</td>
-<td>多用户状态有网络服务</td>
-</tr>
-<tr>
-<td>4</td>
-<td>系统未使用保留给用户</td>
-</tr>
-<tr>
-<td>5</td>
-<td>图形界面</td>
-</tr>
-<tr>
-<td>6</td>
-<td>系统重启</td>
-</tr>
-</tbody></table>
-<p>常用运行级别是 3 和 5 ，也可以指定默认的运行级别</p>
-<p>更改运行级别</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">init <span class="number">0</span>/<span class="number">1</span>/<span class="number">2</span>/<span class="number">3</span>/<span class="number">4</span>/<span class="number">5</span>/<span class="number">6</span></span><br></pre></td></tr></table></figure>
-
-<p>查看当前的运行级别</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">get-default</span></span><br></pre></td></tr></table></figure>
-
-<p>设置默认运行级别(可能适配在CentOS及以前吗，我没试)</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">set-default</span> TARGET.target</span><br></pre></td></tr></table></figure>
-
-<h4 id="8-找回root密码"><a href="#8-找回root密码" class="headerlink" title="8 找回root密码"></a>8 找回root密码</h4><p>启动系统，进入开机界面，在界面中按 “ e “ 进入编辑界面，将光标定位到上面的<code>Core</code>再按 “e” </p>
-<img src="/2024/10/04/Linux/Snipaste_2024-09-13_19-35-31.jpg"  style="zoom:67%;" />
-
-<p>进入编辑界面，使用键盘上的上下键把光标往下移动，找到以 “Linux16” 开头内容所在的行数，在行的最后输入:</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">init=/bin/sh</span><br></pre></td></tr></table></figure>
-
-<img src="/2024/10/04/Linux/Snipaste_2024-09-13_19-42-50.jpg"  style="zoom:67%;" />
-
-<p>输入完之后，按快捷键 <code>Ctrl + x</code>进入单用户模式</p>
-<p>接着在光标闪烁的位置输入，注意空格，完成后回车</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount -o remount,rw /</span><br></pre></td></tr></table></figure>
-
-<img src="/2024/10/04/Linux/Snipaste_2024-09-13_19-44-22.jpg" class="">
-
-<p>在新的一行最后面输入</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd</span><br></pre></td></tr></table></figure>
-
-<p>完成后按回车，输入密码，确认密码，密码若修改成功，则会显示<code>passwd</code>字样</p>
-<img src="/2024/10/04/Linux/Snipaste_2024-09-13_19-45-36.jpg" class="">
-
-<p>接着在鼠标闪烁的位置（最后一行），输入，注意<code>touch</code>后的空格，完成后回车</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch /.autorelabel</span><br></pre></td></tr></table></figure>
-
-<img src="/2024/10/04/Linux/Snipaste_2024-09-13_19-48-45.jpg" class="">
-
-<p>继续在光标闪动的位置，输入下面命令，之后回车等待系统自动修改密码就行了，要等很久</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exec /sbin/init</span><br></pre></td></tr></table></figure>
-
-<img src="/2024/10/04/Linux/Snipaste_2024-09-13_19-49-04.jpg" class="">
-
-<h4 id="9-帮助指令"><a href="#9-帮助指令" class="headerlink" title="9 帮助指令"></a>9 帮助指令</h4><p>查找指令说明</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">man</span> 要查询的指令</span><br></pre></td></tr></table></figure>
-
-<p>显示不全就按空格</p>
-<p>在Linux下，隐藏文件是以 “ . “ 开头的，使用下面的指令可以找到隐藏的</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> <span class="literal">-a</span></span><br></pre></td></tr></table></figure>
-
-<p>单例输出，输出详细信息</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> <span class="literal">-l</span></span><br><span class="line">等同于</span><br><span class="line">ll</span><br></pre></td></tr></table></figure>
-
-<p>单例输出，包括隐藏文件（两种）</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> <span class="literal">-la</span></span><br><span class="line"><span class="built_in">ls</span> <span class="literal">-al</span></span><br></pre></td></tr></table></figure>
-
-<p>指定目录，比如&#x2F;root</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> <span class="literal">-la</span> /root</span><br></pre></td></tr></table></figure>
-
-<p>获得shell内置命令（比如 <code>cd</code>）的帮助信息</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">help <span class="built_in">cd</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="10-文件目录指令"><a href="#10-文件目录指令" class="headerlink" title="10 文件目录指令"></a>10 文件目录指令</h4><h5 id="10-1-回家"><a href="#10-1-回家" class="headerlink" title="10.1 回家"></a>10.1 回家</h5><p>回到自己的家目录</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span></span><br><span class="line"><span class="built_in">cd</span> ~</span><br></pre></td></tr></table></figure>
-
-<h5 id="10-2-创建目录"><a href="#10-2-创建目录" class="headerlink" title="10.2 创建目录"></a>10.2 创建目录</h5><p>创建目录</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir 路径（比如/home/dog）</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>mkdir只能创建一级目录，就是比如上面的只有dog不存在，就创建了一个</li>
-</ul>
-<p>创建多级目录</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir <span class="literal">-p</span> 路径（比如/home/<span class="built_in">cat</span>/hachimi）</span><br></pre></td></tr></table></figure>
-
-<h5 id="10-3-删除目录"><a href="#10-3-删除目录" class="headerlink" title="10.3 删除目录"></a>10.3 删除目录</h5><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rmdir</span> 路径</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>rmdir删除的是空目录，如果目录下有内容是无法删除的</li>
-<li>如果需要删除非空目录，使用 <code>rm -rf 删除目录</code></li>
-</ul>
-<h5 id="10-4-创建空文件"><a href="#10-4-创建空文件" class="headerlink" title="10.4 创建空文件"></a>10.4 创建空文件</h5><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch 文件名（包括后缀）</span><br></pre></td></tr></table></figure>
-
-<h5 id="10-5-拷贝"><a href="#10-5-拷贝" class="headerlink" title="10.5 拷贝"></a>10.5 拷贝</h5><p>基础指令： <code>cp</code></p>
-<p><code>-r</code> 递归复制整个文件夹</p>
-<img src="/2024/10/04/Linux/Snipaste_2024-09-13_20-25-25.jpg"  style="zoom:67%;" />
-
-<p>要是存在文件覆盖怎么办呢，会提示要不要覆盖，我现在直接覆盖，不用我确认了</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\cp <span class="literal">-r</span> /home/bbb /opt</span><br></pre></td></tr></table></figure>
-
-<p>就是加一个 <code>\</code></p>
-<h5 id="10-6-移除文件或目录"><a href="#10-6-移除文件或目录" class="headerlink" title="10.6 移除文件或目录"></a>10.6 移除文件或目录</h5><p>基本语法：</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> [选项] 目录或文件</span><br></pre></td></tr></table></figure>
-
-<p>常用选项：</p>
-<ul>
-<li><code>-r</code> ：递归删除整个文件夹</li>
-<li><code>-f</code>：强制删除不提示</li>
-<li><code>-rf</code>：强制删除不提示删除整个文件夹</li>
-</ul>
-<h5 id="10-7-移动文件与目录-或者-进行重命名"><a href="#10-7-移动文件与目录-或者-进行重命名" class="headerlink" title="10.7 移动文件与目录 或者 进行重命名"></a>10.7 移动文件与目录 或者 进行重命名</h5><p>重命名(文件的话包括后缀)</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mv</span> oldName newName</span><br></pre></td></tr></table></figure>
-
-<p>移动文件</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mv</span> /temp/movefile /targetFolder</span><br></pre></td></tr></table></figure>
-
-<p>举个例子，移动并重命名，哈基汪移过去就变成了哈基米</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mv</span> hachiwang.txt /root/hachimi.txt</span><br></pre></td></tr></table></figure>
-
-<h5 id="10-8-查看文件内容"><a href="#10-8-查看文件内容" class="headerlink" title="10.8 查看文件内容"></a>10.8 查看文件内容</h5><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> [选项] 查看的文件</span><br></pre></td></tr></table></figure>
-
-<p>常用选项：</p>
-<ul>
-<li><code>-n</code>显示行号</li>
-</ul>
-<p>cat只能浏览文件，不能修改文件，为了浏览方便，一般会带上 管道命令 关键字 <code>&quot; | &quot;</code></p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">| more</span><br></pre></td></tr></table></figure>
-
-<p>管道命令类似于把前面的结果交给下一个再处理</p>
-<p>比如</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> <span class="literal">-n</span> /etc/dog | more</span><br></pre></td></tr></table></figure>
-
-<p>就是把前面的结果交给<code>more</code>指令再处理</p>
-<h5 id="10-9-more指令"><a href="#10-9-more指令" class="headerlink" title="10.9 more指令"></a>10.9 more指令</h5><p>more指令是一个基于VI编辑器的文本过滤器，它以全屏幕的方式按页显示文本文件内容。more指令中内置了很多快捷键</p>
-<table>
-<thead>
-<tr>
-<th>操作</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Space</td>
-<td>向下翻页</td>
-</tr>
-<tr>
-<td>Enter</td>
-<td>向下翻一行</td>
-</tr>
-<tr>
-<td>q</td>
-<td>立刻离开more，不再显示该文件内容</td>
-</tr>
-<tr>
-<td>Ctrl + F</td>
-<td>向下滚动一屏</td>
-</tr>
-<tr>
-<td>Ctrl + B</td>
-<td>返回上一屏</td>
-</tr>
-<tr>
-<td>&#x3D;</td>
-<td>输出当前行的行号</td>
-</tr>
-<tr>
-<td>:f</td>
-<td>输出文件名和当前行的行号</td>
-</tr>
-</tbody></table>
-<p>基本语法</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">more 查看的文件</span><br></pre></td></tr></table></figure>
-
-<h5 id="10-10-less指令"><a href="#10-10-less指令" class="headerlink" title="10.10 less指令"></a>10.10 less指令</h5><p>less指令用来分屏查看文件内容，功能与more类似，但是比more更强大， 支持各种显示终端，less指令在显示文件内容时，并不是一次将整个文件加载之后才显示，而是根据显示需要加载内容，对于显示大型文件具有较高的效率。就是他不是一次全加载，而是看到哪里就加载到哪里，类似于动态加载。</p>
-<table>
-<thead>
-<tr>
-<th>操作</th>
-<th>功能说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Space</td>
-<td>向下翻页</td>
-</tr>
-<tr>
-<td>PageDown</td>
-<td>向下翻页</td>
-</tr>
-<tr>
-<td>PageUp</td>
-<td>向上翻页</td>
-</tr>
-<tr>
-<td>&#x2F;字串</td>
-<td>向下搜寻[ 字串 ]的功能；n：向下查找 N：向上查找</td>
-</tr>
-<tr>
-<td>?字串</td>
-<td>向上搜寻[ 字串 ]的功能；n：向上查找 N：向下查找</td>
-</tr>
-<tr>
-<td>q</td>
-<td>离开less</td>
-</tr>
-</tbody></table>
-<p>基本语法</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">less 要查看的文件</span><br></pre></td></tr></table></figure>
-
-<h5 id="10-11-echo指令"><a href="#10-11-echo指令" class="headerlink" title="10.11 echo指令"></a>10.11 echo指令</h5><p>输出内容到控制台</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> [选项] [输出内容]</span><br></pre></td></tr></table></figure>
-
-<p>比如输出环境变量Path</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
-
-<p>输出字符串</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;abc&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="10-12-查看文件头尾内容"><a href="#10-12-查看文件头尾内容" class="headerlink" title="10.12 查看文件头尾内容"></a>10.12 查看文件头尾内容</h5><p>用于显示文件的开头部分内容，默认情况下<code>head</code>指令显示文件的前10行内容</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">head 文件</span><br><span class="line">head <span class="literal">-n</span> <span class="number">5</span> 文件	</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>-n 指定查看行数</li>
-</ul>
-<p>输出文件尾部的内容，默认情况显示文件尾部10行</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tail 文件</span><br><span class="line">tail <span class="literal">-n</span> <span class="number">5</span> 文件</span><br><span class="line">tail <span class="operator">-f</span> 文件</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>-f</code>指的是实时追踪该文档的所有更新，<code>Ctrl + c</code>可以退出这个模式</li>
-</ul>
-<h5 id="10-13-输出重定向与追加"><a href="#10-13-输出重定向与追加" class="headerlink" title="10.13 输出重定向与追加"></a>10.13 输出重定向与追加</h5><p>输出重定向: <code>&gt;</code> ；比如我使用echo指令将一个东西输出到另一个文件中 <code>echo &quot;hello&quot; &gt; abc.txt</code>,这个是完全覆盖为这个字符串</p>
-<p>追加：<code>&gt;&gt;</code></p>
-<p>基本语法：</p>
-<ul>
-<li>列表内容覆盖式写入文件中，文件不存在则会自动创建</li>
-</ul>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> <span class="literal">-l</span> &gt; file</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>列表内容追加到文件末尾</li>
-</ul>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> <span class="literal">-al</span> &gt;&gt; file</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>将文件1的内容覆盖到文件2</li>
-</ul>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> file1 &gt;&gt; file2</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>文件内容追加</li>
-</ul>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;abc&quot;</span> &gt;&gt; file</span><br></pre></td></tr></table></figure>
-
-<h5 id="10-14-链接"><a href="#10-14-链接" class="headerlink" title="10.14 链接"></a>10.14 链接</h5><p>软链接也称为符号链接，类似于Windows中的快捷方式，主要存放了链接其他文件的路径</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln <span class="literal">-s</span> [原文件或目录] [软链接名]</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>给原文件创建一个软链接</li>
-</ul>
-<p>给个实例：</p>
-<p>在<code>/home</code>目录下创建一个软链接 <code>myroot</code>，连接到 <code>/root</code>目录</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln <span class="literal">-s</span> /root /home/myroot</span><br></pre></td></tr></table></figure>
-
-<p>删除软链接myroot</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> /home/myroot</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>注意<code>myroot</code>后面没有 <code>&quot; / &quot;</code></li>
-</ul>
-<h5 id="10-15-查看历史命令"><a href="#10-15-查看历史命令" class="headerlink" title="10.15 查看历史命令"></a>10.15 查看历史命令</h5><p>查看所有</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">history</span></span><br></pre></td></tr></table></figure>
-
-<p>查看最近10个</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">history</span> <span class="number">10</span></span><br></pre></td></tr></table></figure>
-
-<p>执行历史编号为5的指令</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!<span class="number">5</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="10-16-日期"><a href="#10-16-日期" class="headerlink" title="10.16 日期"></a>10.16 日期</h5><ul>
-<li>显示当前时间</li>
-</ul>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">date</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>显示当前年份</li>
-</ul>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">date +%Y</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注意<code>+</code>号后面没有空格</p>
-</blockquote>
-<ul>
-<li>显示当前月份</li>
-</ul>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">date +%m</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>显示当前是哪一天</li>
-</ul>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">date +%d</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>显示年月日时分秒（可以按需）</li>
-</ul>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">date <span class="string">&quot;+%Y-%m-%d %H:%M:%S&quot;</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注意这里的双引号</p>
-</blockquote>
-<ul>
-<li>设置系统当前时间</li>
-</ul>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">date <span class="literal">-s</span> 字符串时间</span><br></pre></td></tr></table></figure>
-
-<p>例如</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">date <span class="literal">-s</span> <span class="string">&quot;2024-9-13 21:40:00&quot;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>显示当前日历信息</li>
-</ul>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cal</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>显示整年日历</li>
-</ul>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cal 年份</span><br></pre></td></tr></table></figure>
-
-<h4 id="11-查找指令"><a href="#11-查找指令" class="headerlink" title="11 查找指令"></a>11 查找指令</h4><h5 id="11-1-find"><a href="#11-1-find" class="headerlink" title="11.1 find"></a>11.1 find</h5><p>find指令从指定目录乡下递归遍历各个子目录，并显示结果</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fine [搜索范围] [选项] file</span><br></pre></td></tr></table></figure>
-
-<p>常用选项：</p>
-<ul>
-<li><code>-name</code> 特定文件名</li>
-<li><code>-user</code> 属于特定用户所有文件</li>
-<li><code>-size</code> 指定大小的所有文件</li>
-</ul>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fine /home <span class="literal">-size</span> +<span class="number">200</span>M 大于</span><br><span class="line">fine /home <span class="literal">-size</span> <span class="literal">-200M</span> 小于</span><br><span class="line">fine /home <span class="literal">-size</span> <span class="number">200</span>M  等于</span><br></pre></td></tr></table></figure>
-
-<h5 id="11-2-locate"><a href="#11-2-locate" class="headerlink" title="11.2 locate"></a>11.2 locate</h5><p>快速定位文件路径，需要事先建立系统中所有文件名称及路径的locate数据库，来实现快速定位，他无需遍历整个文件系统，所以查的快</p>
-<p>在第一次运行<code>locate</code>之前，需要创建<code>locate</code>数据库</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">updatedb</span><br></pre></td></tr></table></figure>
-
-<p>查找</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locate file</span><br></pre></td></tr></table></figure>
-
-<h5 id="11-3-which"><a href="#11-3-which" class="headerlink" title="11.3 which"></a>11.3 which</h5><p>查找命令所在目录</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">which 命令</span><br></pre></td></tr></table></figure>
-
-<h5 id="11-4-grep"><a href="#11-4-grep" class="headerlink" title="11.4 grep"></a>11.4 grep</h5><p>过滤查找，可以和管道符号<code>&quot; | &quot;</code>配合使用，将前面的结果交给后面处理</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep [选项] 查找内容 file</span><br></pre></td></tr></table></figure>
-
-<p>常用选项：</p>
-<ul>
-<li><code>-n</code> 显示行号</li>
-<li><code>-i</code>忽略大小写</li>
-</ul>
-<p>比如</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> Hello.java | grep <span class="literal">-ni</span> <span class="string">&quot;yes&quot;</span></span><br><span class="line">grep <span class="literal">-ni</span> <span class="string">&quot;yes&quot;</span> Hello.java</span><br></pre></td></tr></table></figure>
-
-<h4 id="12-压缩解压"><a href="#12-压缩解压" class="headerlink" title="12 压缩解压"></a>12 压缩解压</h4><h5 id="12-1-gzip"><a href="#12-1-gzip" class="headerlink" title="12.1 gzip"></a>12.1 gzip</h5><p>压缩，将文件压缩成<code>*.gz</code></p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip file</span><br></pre></td></tr></table></figure>
-
-<p>解压缩，带后缀，比如 <code>abc.txt.gz</code></p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gunzip file</span><br></pre></td></tr></table></figure>
-
-<h5 id="12-2-zip"><a href="#12-2-zip" class="headerlink" title="12.2 zip"></a>12.2 zip</h5><p>压缩文件夹或文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zip [选项] file</span><br></pre></td></tr></table></figure>
-
-<p>常用选项：</p>
-<ul>
-<li><code>-r</code> 递归压缩，即压缩目录</li>
-</ul>
-<p>例子：将&#x2F;home下的所有文件压缩成myhome.zip，包括了home</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">zip <span class="literal">-r</span> myhome.zip /home/</span><br><span class="line">或者</span><br><span class="line">zip <span class="literal">-r</span> myhome.zip /home/*</span><br></pre></td></tr></table></figure>
-
-<p>解压缩</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unzip [选项] file </span><br></pre></td></tr></table></figure>
-
-<p>常用选项：</p>
-<ul>
-<li><code>-d&lt;目录&gt;</code> 指定解压后的文件存放目录</li>
-</ul>
-<p>例子：将myhome.zip解压到&#x2F;opt&#x2F;tmp目录下</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unzip <span class="literal">-d</span> /opt/tmp /home/myhome.zip</span><br></pre></td></tr></table></figure>
-
-<h5 id="12-3-tar"><a href="#12-3-tar" class="headerlink" title="12.3 tar"></a>12.3 tar</h5><p>又可解压又可压缩</p>
-<p>压缩后的文件格式为 <code>.tar.gz</code></p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar [选项] XXX.tar.gz 打包内容</span><br></pre></td></tr></table></figure>
-
-<p>常用选项：</p>
-<ul>
-<li><code>-c</code> 产生 <code>.tar</code> 打包文件</li>
-<li><code>-v</code> 显示详细信息</li>
-<li><code>-f</code> 指定压缩后的文件名</li>
-<li><code>-z</code> 打包同时压缩</li>
-<li><code>-x</code> 解包<code>.tar</code>文件</li>
-</ul>
-<p>压缩多个文件</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar <span class="literal">-zcvf</span> pc.tar.gz /home/pig.txt /home/cat.txt </span><br></pre></td></tr></table></figure>
-
-<p>压缩文件夹</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar <span class="literal">-zcvf</span> myhome.tar.gz /home/</span><br></pre></td></tr></table></figure>
-
-<p>解压到当前文件夹</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar <span class="literal">-zxvf</span> pc.tar.gz</span><br></pre></td></tr></table></figure>
-
-<p>解压到指定目录</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar <span class="literal">-zxvf</span> /home/myhome/tar.gz <span class="literal">-C</span> /opt/tmp2</span><br></pre></td></tr></table></figure>
-
-<h4 id="13-组"><a href="#13-组" class="headerlink" title="13 组"></a>13 组</h4><p>Linux中每个用户必须属于一个组，不能独立与组外，每个文件有所有者，所在组，其他组的概念</p>
-<p>假如说 A 组有 abc 三个人，文件 a.txt 也属于 A 组，那么这三个人都有对 a.txt 操作的权限</p>
-<ul>
-<li>所有者：一般是文件创建者，当然可以改</li>
-</ul>
-<p>查看文件所有者</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> <span class="literal">-ahl</span></span><br></pre></td></tr></table></figure>
-
-<p>修改文件所有者</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown 用户名 文件名</span><br></pre></td></tr></table></figure>
-
-<p>修改文件&#x2F;目录所在组</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chgrp 组名 文件名</span><br><span class="line"></span><br><span class="line">chgrp <span class="literal">-R</span> 组名 目录  // 修改目录下所有文件所在组</span><br></pre></td></tr></table></figure>
-
-<p>修改用户所在组</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod <span class="literal">-g</span> 新组名 用户名</span><br></pre></td></tr></table></figure>
-
-<p>改变用户初始登录目录，注意用户需要有进入到新目录的权限</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod <span class="literal">-d</span> 新目录 用户名 </span><br></pre></td></tr></table></figure>
-
-<h4 id="14-权限"><a href="#14-权限" class="headerlink" title="14 权限"></a>14 权限</h4><h5 id="14-1-说明"><a href="#14-1-说明" class="headerlink" title="14.1 说明"></a>14.1 说明</h5><img src="/2024/10/04/Linux/Snipaste_2024-09-14_10-45-11.jpg" class="">
-
-<p>前面有10位</p>
-<ul>
-<li>第0位确定文件类型 （d , - , l , c , b）<ul>
-<li>l 是链接，类似于快捷方式</li>
-<li>- 普通文件</li>
-<li>d是目录</li>
-<li>c是字符设备文件，鼠标啥的</li>
-<li>b是块设备，比如硬盘</li>
-</ul>
-</li>
-<li>1-3位确定文件所有者拥有的该文件权限<ul>
-<li>r 可读 ；w可写 ；x可执行</li>
-<li>x作用到文件表示可执行 作用到目录表示可进入</li>
-</ul>
-</li>
-<li>4-6位确定所属组拥有的该文件权限</li>
-<li>7-9位确定其他用户拥有的该文件权限</li>
-</ul>
-<h5 id="14-2-修改权限"><a href="#14-2-修改权限" class="headerlink" title="14.2 修改权限"></a>14.2 修改权限</h5><p>使用 + 、- 、&#x3D; 变成权限</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chmod u=rwx,g=rx,o=x 文件/目录</span><br><span class="line">chmod o+w</span><br><span class="line">chmod a<span class="literal">-x</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>u 所有者 user</li>
-<li>g 所有组 group</li>
-<li>o 其他人others</li>
-<li>a 所有人 all（ugo的综合）</li>
-</ul>
-<p>使用数字变更权限</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chmod <span class="number">751</span></span><br><span class="line">相当于</span><br><span class="line">chmod u=rwx,g=rx,o=x</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>r &#x3D; 4 ；w &#x3D; 2 ；x &#x3D; 1</li>
-<li>比如3 &#x3D; 2 + 1，就相当于是wx权限</li>
-</ul>
-<h5 id="14-3-修改所有者"><a href="#14-3-修改所有者" class="headerlink" title="14.3 修改所有者"></a>14.3 修改所有者</h5><p>修改所有者</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown newowener 文件/目录</span><br></pre></td></tr></table></figure>
-
-<p>修改某个文件夹下的所有子文件或目录，递归生效</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown <span class="literal">-R</span> newowener 目录</span><br></pre></td></tr></table></figure>
-
-<p>改变所有者与所在组</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown newowener:newgroup 文件/目录</span><br></pre></td></tr></table></figure>
-
-<h4 id="15-定时任务调度"><a href="#15-定时任务调度" class="headerlink" title="15 定时任务调度"></a>15 定时任务调度</h4><h5 id="15-1-crontab"><a href="#15-1-crontab" class="headerlink" title="15.1 crontab"></a>15.1 crontab</h5><p>crontab进行定时任务的设置</p>
-<p>任务调度指的是系统在某个时间执行的特定的命令或者程序</p>
-<p>进入设置个人调度任务</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab <span class="literal">-e</span></span><br></pre></td></tr></table></figure>
-
-<p>比如想要每小时每分钟执行一个指令</p>
-<p>就输入</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*/<span class="number">1</span> * * * * <span class="built_in">ls</span> <span class="literal">-l</span> /etc/ &gt; /tmp/to.txt</span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th>项目</th>
-<th>含义</th>
-<th>范围</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>第一个 “ * “</td>
-<td>一小时当中的第几分钟</td>
-<td>0 - 59</td>
-</tr>
-<tr>
-<td>第二个 “ * “</td>
-<td>一天中的第几小时</td>
-<td>0 - 23</td>
-</tr>
-<tr>
-<td>第三个 “ * “</td>
-<td>一月中的第几天</td>
-<td>1 - 31</td>
-</tr>
-<tr>
-<td>第四个 “ * “</td>
-<td>一年中的第几月</td>
-<td>1 - 12</td>
-</tr>
-<tr>
-<td>第五个 “ * “</td>
-<td>一周中的周几</td>
-<td>0 - 7(0 &#x2F; 7都代表周日)</td>
-</tr>
-</tbody></table>
-<p>还有一些特殊符号</p>
-<table>
-<thead>
-<tr>
-<th>特殊符号</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>*</td>
-<td>代表任何时间</td>
-</tr>
-<tr>
-<td>，</td>
-<td>代表不连续时间，比如0 8,12,16 * * * 命令，就代表在每天的8点0分…执行</td>
-</tr>
-<tr>
-<td>-</td>
-<td>连续的时间范围，比如0 5 * * 1-6 在周一到周六凌晨五点执行</td>
-</tr>
-<tr>
-<td>*&#x2F;n</td>
-<td>每隔多久执行一次</td>
-</tr>
-</tbody></table>
-<p>可以编写一段shell指令来定期执行</p>
-<p>编写一个<code>.sh</code>脚本文件</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim /home/my.sh</span><br><span class="line"></span><br><span class="line">输入</span><br><span class="line"></span><br><span class="line">date &gt;&gt; /home/mycal</span><br><span class="line">cal &gt;&gt; /home/mycal</span><br></pre></td></tr></table></figure>
-
-<p>然后保存退出就行了</p>
-<p>要确定这个文件具有可执行的权限，没有给他加上</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ll</span><br><span class="line"></span><br><span class="line">chmod u+x my.sh</span><br></pre></td></tr></table></figure>
-
-<p>随后</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">crontab <span class="literal">-e</span></span><br><span class="line"></span><br><span class="line">输入</span><br><span class="line"></span><br><span class="line">*/<span class="number">1</span> * * * * /home/my.sh</span><br></pre></td></tr></table></figure>
-
-<p>还有一个比如每天2：00将mysql数据库testdb被分到文件中</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span> <span class="number">2</span> * * * mysqldump <span class="literal">-u</span> root <span class="literal">-p</span>密码 数据库 &gt;&gt; /home/db.bak</span><br><span class="line">xxxxxxxxxx <span class="number">0</span> <span class="number">2</span> * * * mysqldump <span class="literal">-u</span> root <span class="literal">-proot</span> testdb &gt;&gt; /home/db.bak</span><br></pre></td></tr></table></figure>
-
-<p>查看当前任务调度</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab <span class="literal">-l</span></span><br></pre></td></tr></table></figure>
-
-<p>终止当前所有任务调度</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab <span class="literal">-r</span></span><br></pre></td></tr></table></figure>
-
-<p>重启任务调度（失效了）</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service crond restart</span><br></pre></td></tr></table></figure>
-
-<h5 id="15-2-at"><a href="#15-2-at" class="headerlink" title="15.2 at"></a>15.2 at</h5><ul>
-<li>at命令是一次性定时计划任务，at的守护进程atd会以后台模式运行，检查作业队列来运行</li>
-<li>默认情况下，atd守护进程每隔60s检查作业队列，查到作业会检查运行时间，如果匹配就运行</li>
-<li>使用at时，一定要保证atd进程的启动，可以使用相关指令来查看</li>
-</ul>
-<p>格式</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">at [选项] [时间]</span><br></pre></td></tr></table></figure>
-
-<p>写完之后使用 <code>Ctrl + D</code> 结束<code>at</code>命令的输入</p>
-<p>选项和时间去查 <a target="_blank" rel="noopener" href="https://www.linuxcool.com/at">Linux at命令</a></p>
-<h4 id="16-Linux-磁盘分区、挂载"><a href="#16-Linux-磁盘分区、挂载" class="headerlink" title="16 Linux 磁盘分区、挂载"></a>16 Linux 磁盘分区、挂载</h4><img src="/2024/10/04/Linux/Snipaste_2024-09-14_13-57-08.jpg"  style="zoom:60%;" />
-
-<p>就相当于是一个分区挂载到一个目录上，进入这个目录就相当于进入了这个分区。</p>
-<p>查看分区挂载情况</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lsblk</span><br><span class="line">lsblk <span class="operator">-f</span></span><br></pre></td></tr></table></figure>
-
-<p>现在Linux比较常见的是SCSI磁盘了，还有一种是 SATA</p>
-<h5 id="16-1-增加磁盘"><a href="#16-1-增加磁盘" class="headerlink" title="16.1 增加磁盘"></a>16.1 增加磁盘</h5><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Sv411r7vd/?p=59&spm_id_from=pageDriver&vd_source=cad7792963e5468a03db9ab0feb759ff">增加磁盘应用实例</a></p>
-<h5 id="16-2-磁盘情况查询"><a href="#16-2-磁盘情况查询" class="headerlink" title="16.2 磁盘情况查询"></a>16.2 磁盘情况查询</h5><p>查询所有</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df <span class="literal">-h</span></span><br></pre></td></tr></table></figure>
-
-<p>查询指定目录的磁盘占用情况</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du <span class="literal">-h</span> 目录</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>默认为当前目录</li>
-<li><code>-s</code> 指定目录占用大小汇总</li>
-<li><code>-h</code> 带计量单位</li>
-<li><code>-a</code> 含文件</li>
-<li><code>--max-depth=1</code> 子目录深度 （可以和上面下面的的配合，比如 <code>-hac --max-depth=1</code>）</li>
-<li><code>-c</code> 列出明细的同时，给出汇总值</li>
-</ul>
-<h5 id="16-3-查询文件个数"><a href="#16-3-查询文件个数" class="headerlink" title="16.3 查询文件个数"></a>16.3 查询文件个数</h5><p>统计某个文件夹下文件个数</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> <span class="literal">-l</span> 目录 | grep <span class="string">&quot;^-&quot;</span> | wc <span class="literal">-l</span></span><br></pre></td></tr></table></figure>
-
-<p>就是筛选 <code>ls -l</code> 指令中以<code>&quot; - &quot;</code>开头的文件数量</p>
-<p>要是包括子文件夹</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> <span class="literal">-lR</span> 目录 | grep <span class="string">&quot;^-&quot;</span> | wc <span class="literal">-l</span></span><br></pre></td></tr></table></figure>
-
-<p>以树状显示目录结构</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tree 目录</span><br></pre></td></tr></table></figure>
-
-<h4 id="17-Linux网络配置"><a href="#17-Linux网络配置" class="headerlink" title="17 Linux网络配置"></a>17 Linux网络配置</h4><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Sv411r7vd?p=65&spm_id_from=pageDriver&vd_source=cad7792963e5468a03db9ab0feb759ff">固定Linux ip地址</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Sv411r7vd?p=66&vd_source=cad7792963e5468a03db9ab0feb759ff">为Linux设置主机名</a></p>
-<h4 id="18-进程"><a href="#18-进程" class="headerlink" title="18 进程"></a>18 进程</h4><p>检测当前所有运行的进程</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ps</span> <span class="literal">-ef</span></span><br><span class="line">可以直接用</span><br><span class="line"><span class="built_in">ps</span> <span class="literal">-ef</span> | grep atd</span><br></pre></td></tr></table></figure>
-
-<p>终止进程</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">kill</span> [选项] 进程号</span><br><span class="line">killall 进程名 //这个会杀死子进程</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>kill 的选项 <code>-g</code> 强迫进程立即停止</li>
-</ul>
-<p>查看进程树</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pstree [选项]</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>-p</code> 显示进程PID</li>
-<li><code>-u</code> 显示进程所属用户</li>
-</ul>
-<h4 id="19-服务管理"><a href="#19-服务管理" class="headerlink" title="19 服务管理"></a>19 服务管理</h4><h5 id="19-1-service-systemctl"><a href="#19-1-service-systemctl" class="headerlink" title="19.1 service systemctl"></a>19.1 service systemctl</h5><p>服务（service）本质是进程，但是运行在后台，通常会监听某个端口，等待其他程序的请求，比如（mysql，sshd，防火墙等），因此又叫做守护进程</p>
-<p>CentOS7以后很多指令由<code>service</code>变成了 <code>systemctl</code></p>
-<p>Linux开机流程说明：</p>
-<p>开机 —&gt; BIOS —&gt; &#x2F;boot —&gt; systemd进程1 —&gt; 运行级别 —&gt; 运行级别对应的服务</p>
-<h5 id="19-2-chkconfig"><a href="#19-2-chkconfig" class="headerlink" title="19.2 chkconfig"></a>19.2 chkconfig</h5><p>能够用于日常管理服务程序的自启动开启、自启动关闭等工作</p>
-<p><a target="_blank" rel="noopener" href="https://www.linuxcool.com/chkconfig">chkconfig使用</a></p>
-<h5 id="19-3-firewall"><a href="#19-3-firewall" class="headerlink" title="19.3 firewall"></a>19.3 firewall</h5><p>打开端口</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall<span class="literal">-cmd</span> <span class="literal">--permanent</span> <span class="literal">--add-port</span>=端口号/协议</span><br></pre></td></tr></table></figure>
-
-<p>关闭端口</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall<span class="literal">-cmd</span> <span class="literal">--permanent</span> <span class="literal">--remove-port</span>=端口号/协议</span><br></pre></td></tr></table></figure>
-
-<p>重新载入，才能生效</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall<span class="literal">-cmd</span> <span class="literal">--reload</span></span><br></pre></td></tr></table></figure>
-
-<p>查询端口是否开放</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall<span class="literal">-cmd</span> <span class="literal">--query-port</span>=端口/协议</span><br></pre></td></tr></table></figure>
-
-<h4 id="20-动态监控进程"><a href="#20-动态监控进程" class="headerlink" title="20 动态监控进程"></a>20 动态监控进程</h4><h5 id="20-1-top"><a href="#20-1-top" class="headerlink" title="20.1 top"></a>20.1 top</h5><p>top命令的功能是实时显示系统运行状态，包含处理器、内存、服务、进程等重要资产信息</p>
-<p><a target="_blank" rel="noopener" href="https://www.linuxcool.com/top">top命令</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.linuxcool.com/zwlxtzdtmlss">参数</a></p>
-<p>zmobie：僵尸进程，进程已经死掉了，但是内存没有释放</p>
-<h5 id="20-2-netstat"><a href="#20-2-netstat" class="headerlink" title="20.2 netstat"></a>20.2 netstat</h5><p>监控网络状态</p>
-<p>netstat命令来自英文词组network statistics的缩写，其功能是显示各种网络相关信息，例如网络连接状态、路由表信息、接口状态、NAT、多播成员等。<br><a target="_blank" rel="noopener" href="https://www.linuxcool.com/netstat">netstat命令</a></p>
-<h4 id="21-rpm管理"><a href="#21-rpm管理" class="headerlink" title="21 rpm管理"></a>21 rpm管理</h4><p>rpm命令来自英文词组redhat package manager的缩写，中文译为“红帽软件包管理器”，其功能是在Linux系统下对软件包进行安装、卸载、查询、验证、升级等工作。</p>
-<p><a target="_blank" rel="noopener" href="https://www.linuxcool.com/rpm">rpm指令</a></p>
-<h4 id="22-yum"><a href="#22-yum" class="headerlink" title="22 yum"></a>22 yum</h4><p>yum命令来自英文词组yellow dog updater modified的缩写，其功能是在Linux系统中基于RPM技术进行软件包的管理工作。yum技术通用于RHEL、CentOS、Fedora、OpenSUSE等主流系统，可以让系统管理人员交互式地自动化更新和管理软件包，实现从指定服务器自动下载、更新、删除软件包的工作。</p>
-<p><a target="_blank" rel="noopener" href="https://www.linuxcool.com/yum">yum指令</a></p>
-<h4 id="23-安装配置"><a href="#23-安装配置" class="headerlink" title="23 安装配置"></a>23 安装配置</h4><h5 id="23-1-JDK"><a href="#23-1-JDK" class="headerlink" title="23.1 JDK"></a>23.1 JDK</h5><p>首先，创建一个文件存放jdk</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir /opt/jdk</span><br></pre></td></tr></table></figure>
-
-<p>使用Xftp将下载好的jdk压缩包放到这个目录下</p>
-<p><a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/downloads/?er=221886#java17">jdk 17下载位置</a></p>
-<p>解压</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar <span class="literal">-zxvf</span> jdk<span class="literal">-17_linux-x64_bin</span>.tar.gz</span><br></pre></td></tr></table></figure>
-
-<p>创建一个java文件夹，并把解压好的jdk移过去</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir /usr/local/java</span><br><span class="line"><span class="built_in">mv</span> jdk<span class="literal">-17</span>.<span class="number">0.12</span>/ /usr/local/java/</span><br></pre></td></tr></table></figure>
-
-<p>配置环境变量</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile</span><br></pre></td></tr></table></figure>
-
-<p>按G定位到最后一行，在最后一行输入</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/local/java/jdk<span class="literal">-17</span>.<span class="number">0.12</span></span><br><span class="line">export PATH=<span class="variable">$JAVA_HOME</span>/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
-
-<p>保存退出，刷新以下这个文件</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
-
-<p>测试是否安装成功</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$PATH</span></span><br><span class="line">javac <span class="literal">-version</span></span><br><span class="line">javac ./Hello.java</span><br><span class="line">java Hello</span><br></pre></td></tr></table></figure>
-
-<p>全没错的话最后会成功输出的</p>
-<h5 id="23-2-Tomcat"><a href="#23-2-Tomcat" class="headerlink" title="23.2 Tomcat"></a>23.2 Tomcat</h5><p>创建一个文件夹存放Tomcat</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir /opt/tomcat</span><br></pre></td></tr></table></figure>
-
-<p>把Tomcat压缩包放在这个目录下面</p>
-<p><a target="_blank" rel="noopener" href="https://tomcat.apache.org/download-90.cgi">Tomcat 下载</a></p>
-<p>解压</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar <span class="literal">-zxvf</span> apache<span class="literal">-tomcat-9</span>.<span class="number">0.94</span>.tar.gz</span><br></pre></td></tr></table></figure>
-
-<p>进到解压后的目录，进入bin，运行<code>startup.sh</code>文件</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> apache<span class="literal">-tomcat-9</span>.<span class="number">0.94</span>/bin</span><br><span class="line">./startup.sh</span><br></pre></td></tr></table></figure>
-
-<p>开启8080端口，并测试是否成功</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">firewall<span class="literal">-cmd</span> <span class="literal">--permanent</span> <span class="literal">--add-port</span>=<span class="number">8080</span>/tcp</span><br><span class="line">firewall<span class="literal">-cmd</span> <span class="literal">--reload</span> 			//使生效</span><br><span class="line">firewall<span class="literal">-cmd</span> <span class="literal">--query-port</span>=<span class="number">8080</span>/tcp</span><br></pre></td></tr></table></figure>
-
-<p>这样就可以在主机的 linux IP:8080访问Tomcat主页了</p>
-<p>写一个html试试</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> webapps/ROOT</span><br><span class="line">vim lxy.html</span><br></pre></td></tr></table></figure>
-
-<p>随便写个</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span> hello test <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>主机测试一下，访问 linux IP:8080&#x2F;lxy.html</p>
-<img src="/2024/10/04/Linux/Snipaste_2024-09-14_17-58-11.jpg"  style="zoom:67%;" />
-
-<h5 id="23-3-IDEA"><a href="#23-3-IDEA" class="headerlink" title="23.3 IDEA"></a>23.3 IDEA</h5><p>过程一样，建一个<code>/opt/idea</code>文件夹，下载linux的IDEA安装包放到下面，解压，进入到bin目录，运行</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./idea.sh</span><br></pre></td></tr></table></figure>
-
-<p>就安装好了</p>
-<p>启动IDEA，在IDEA的bin目录下(两条都可以，建议第二个)</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./idea.sh</span><br><span class="line">./idea</span><br></pre></td></tr></table></figure>
-
-<h5 id="23-4-MySQL"><a href="#23-4-MySQL" class="headerlink" title="23.4 MySQL"></a>23.4 MySQL</h5><p>该看P89，感觉没用</p>
-<h4 id="24-Shell编程"><a href="#24-Shell编程" class="headerlink" title="24 Shell编程"></a>24 Shell编程</h4><p>Shell是一个命令行解释器，它为用户提供过了一个向Linux内核发送请求以便运行程序的界面系统级程序，用户可以使用Shell来启动、挂起、停止甚至是编写一些程序。</p>
-<img src="/2024/10/04/Linux/Snipaste_2024-09-18_19-05-05.jpg"  style="zoom:67%;" />
-
-<p>编写脚本，约定俗成以<code>.sh</code>结尾</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim hello.sh </span><br></pre></td></tr></table></figure>
-
-<p>写入，第一行是默认这样的，因为使用bashell，第二行是输出hello</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line">echo &quot;hello&quot;</span><br></pre></td></tr></table></figure>
-
-<p>需要赋予执行权限</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod u+x hello.sh</span><br></pre></td></tr></table></figure>
-
-<p>执行就行了</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./hello.sh</span><br></pre></td></tr></table></figure>
-
-<p>或者使用绝对路径执行</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/opt/shcode/hello.sh</span><br></pre></td></tr></table></figure>
-
-<p>如果没有赋予可执行权限，执行方式为</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh hello.sh</span><br></pre></td></tr></table></figure>
-
-<h5 id="24-1-Shell变量"><a href="#24-1-Shell变量" class="headerlink" title="24.1 Shell变量"></a>24.1 Shell变量</h5><p>基础语法：</p>
-<ul>
-<li>定义变量：变量名&#x3D;值（注意没有空格）</li>
-<li>撤销变量：unset变量</li>
-<li>声明静态变量：readonly 变量（注意不能unset）</li>
-<li>输出变量加“<code>$</code>”</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">A=100</span><br><span class="line">echo A=$A</span><br><span class="line">echo &quot;A=$A&quot;</span><br><span class="line">unset A</span><br><span class="line">readonly B=2</span><br><span class="line">echo B=$B</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>变量名一般大写</li>
-<li>将命令的返回值赋给变量，不加单引号相当于赋值给他这个单词</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A=&#x27;date&#x27;</span><br><span class="line">A=$(date)</span><br></pre></td></tr></table></figure>
-
-<h5 id="24-2-位置参数变量"><a href="#24-2-位置参数变量" class="headerlink" title="24.2 位置参数变量"></a>24.2 位置参数变量</h5><p>执行Shell脚本时，如果希望获取到命令行的参数信息，就可以使用到位置参数变量，比如</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./myshell.sh <span class="number">100</span> <span class="number">200</span></span><br></pre></td></tr></table></figure>
-
-<p>基本语法：</p>
-<ul>
-<li><code>$n</code> ：n为数字，<code>$0</code>代表命令本身，也就是<code>./myshell.sh</code>,<code>$1</code>代表第一个参数<code>100</code>。以此类推直到 <code>$9</code>,十以上的格式为 <code>$&#123;n&#125;</code></li>
-<li><code>$*</code>：命令行中的所有参数，看成一个整体</li>
-<li><code>$@</code>：命令行中的所有参数，不过 <code>$@</code> 把每个参数区分对待</li>
-<li><code>$#</code>：代表命令行中的所有参数的个数</li>
-</ul>
-<h5 id="24-3-预定义变量"><a href="#24-3-预定义变量" class="headerlink" title="24.3 预定义变量"></a>24.3 预定义变量</h5><p>可以直接在Shell脚本中使用的提前已经定义好的变量</p>
-<p>基本语法：</p>
-<ul>
-<li><code>$$</code>：当前进程的进程号（PID）</li>
-<li><code>$!</code>：后台运行的最后一个进程的进程号</li>
-<li><code>$?</code>：最后一次执行的命令的返回状态，值为<code>0</code>则正确执行，非零则执行不正确</li>
-</ul>
-<h5 id="24-4-运算符"><a href="#24-4-运算符" class="headerlink" title="24.4 运算符"></a>24.4 运算符</h5><ul>
-<li><code>$((运算式))</code> 或者是 <code>$[运算式]</code> 或者是 <code>expr m + n</code>，运算符之间有空格</li>
-<li>如果希望将<code>expr</code>的结果赋值给某个变量，需要使用 <code>&#39;&#39;</code></li>
-<li><code>expr \*</code>：乘</li>
-<li>&#96;expr &#x2F;：除</li>
-<li><code>expr %</code>：取余</li>
-</ul>
-<h5 id="24-5-条件判断"><a href="#24-5-条件判断" class="headerlink" title="24.5 条件判断"></a>24.5 条件判断</h5><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Sv411r7vd?p=97&spm_id_from=pageDriver&vd_source=cad7792963e5468a03db9ab0feb759ff">条件判断</a></p>
-<h5 id="24-6-单分支多分支、case、for、while"><a href="#24-6-单分支多分支、case、for、while" class="headerlink" title="24.6 单分支多分支、case、for、while"></a>24.6 单分支多分支、case、for、while</h5><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Sv411r7vd?p=98&vd_source=cad7792963e5468a03db9ab0feb759ff">流程控制</a></p>
-<h5 id="24-7-获取控制台输入"><a href="#24-7-获取控制台输入" class="headerlink" title="24.7 获取控制台输入"></a>24.7 获取控制台输入</h5><p>语法：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">read(选项)(参数)</span><br></pre></td></tr></table></figure>
-
-<p>选项：</p>
-<ul>
-<li><code>-p</code>：指定读取值时的提示符</li>
-<li><code>-t</code>：指定读取值时的等待时间（秒），如果没有在指定的时间内输入，就不等待了</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">read -p &quot;请输入数字num=&quot; NUM</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">read -t 10 -p &quot;请输入数字num=&quot; NUM</span><br></pre></td></tr></table></figure>
-
-<p>参数：</p>
-<ul>
-<li>变量：指定读取值的变量名</li>
-</ul>
-<h5 id="24-8-函数"><a href="#24-8-函数" class="headerlink" title="24.8 函数"></a>24.8 函数</h5><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Sv411r7vd?p=103&vd_source=cad7792963e5468a03db9ab0feb759ff">系统函数以及自定义函数</a></p>
-<h5 id="24-9-定时备份数据库"><a href="#24-9-定时备份数据库" class="headerlink" title="24.9 定时备份数据库"></a>24.9 定时备份数据库</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">备份目录</span></span><br><span class="line">BACKUP=/data/backup/db</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">当前时间</span></span><br><span class="line">DATETIME=$&#123;date +%Y-%m-%d_%H%M%S&#125;</span><br><span class="line">echo $DATATIME</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">数据库信息</span></span><br><span class="line">HOST=localhost</span><br><span class="line">DB_USER=root</span><br><span class="line">DB_PW=lxy</span><br><span class="line">DATABASE=temp</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建备份目录，不存在则创建</span></span><br><span class="line">[ ! -d &quot;$&#123;BACKUP&#125;/$&#123;DATETIME&#125;&quot; ] &amp;&amp; mkdir -p &quot;$&#123;BACKUP/$DATETIME&#125;&quot;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">备份数据库</span></span><br><span class="line">mysqldump -u$&#123;DB_USER&#125; -p$&#123;DB_PW&#125; --host=$&#123;HOST&#125; -q -R --databases $&#123;DATABASE&#125; | gzip &gt; $&#123;BACKUP&#125;/$&#123;DATETIME&#125;/$DATETIME.sql.gz</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">将文件处理成 tar.gz</span></span><br><span class="line">cd $&#123;BACKUP&#125;</span><br><span class="line">tar -zcvf $DATETIME.tar.gz $&#123;DATETIME&#125;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">删除对应的备份目录</span></span><br><span class="line">rm -rf $&#123;BACKUP&#125;/$&#123;DATETIME&#125;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">删除十天前的备份文件</span></span><br><span class="line">find $&#123;BACKUP&#125; -atime +10 -name &quot;*.tar.gz&quot; -exec rm -rf &#123;&#125; \;</span><br><span class="line">echo &quot;备份数据库$&#123;DATABASE&#125;成功&quot;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br><span class="line">输入</span><br><span class="line">30 2 * * * /usr/sbin/mysql_db_backup.sh</span><br></pre></td></tr></table></figure>
-
-<h4 id="25-日志管理"><a href="#25-日志管理" class="headerlink" title="25 日志管理"></a>25 日志管理</h4><p>系统日志文件保存位置 <code>/var/log</code></p>
-<p>常用日志：</p>
-<img src="/2024/10/04/Linux/Snipaste_2024-09-18_20-18-12.jpg"  style="zoom:67%;" />
-
-<p>日志管理服务是<code>rsyslogd</code>，会定时记录相关信息</p>
-<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Sv411r7vd?p=121&vd_source=cad7792963e5468a03db9ab0feb759ff">日志轮替</a></p>
-<h4 id="26-数据备份dump与数据恢复restore"><a href="#26-数据备份dump与数据恢复restore" class="headerlink" title="26 数据备份dump与数据恢复restore"></a>26 数据备份dump与数据恢复restore</h4><h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/10/04/Linux/" data-id="cm1u9vlif0000wwasc216d4j9" data-title="Linux" class="article-share-link"><span class="fa fa-share">分享</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OS/" rel="tag">OS</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/10/01/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2024-10-01T05:47:40.186Z" itemprop="datePublished">2024-10-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/10/01/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/10/01/hello-world/" data-id="cm1u9vlil0001wwas5itl2nzd" data-title="Hello World" class="article-share-link"><span class="fa fa-share">分享</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/OS/" style="font-size: 10px;">OS</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">十月 2024</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2024/10/04/Linux/">Linux</a>
-          </li>
-        
-          <li>
-            <a href="/2024/10/01/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2024 expAddThree<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.6.4.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
-</body>
-</html>
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/10/">
+          <span class="card-archive-list-date">十月 2024</span>
+          <span class="card-archive-list-count">2</span>
+        </a>
+      </li>
+    </ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">2</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-10-04T05:32:53.381Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By expAddThree</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
