@@ -1,0 +1,220 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>每日1题 | LXY's Notes</title><meta name="author" content="expAddThree"><meta name="copyright" content="expAddThree"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="2024.12.23 855.考场就坐在考场里，一排有 N 个座位，分别编号为 0, 1, 2, ..., N-1 。 当学生进入考场后，他必须坐在能够使他与离他最近的人之间的距离达到最大化的座位上。如果有多个这样的座位，他会坐在编号最小的座位上。(另外，如果考场里没有人，那么学生就坐在 0 号座位上。) 返回 ExamRoom(int N) 类，它有两个公开的函数：其中，函数 ExamRoom.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每日1题">
+<meta property="og:url" content="http://example.com/2024/12/23/%E6%AF%8F%E6%97%A51%E9%A2%98/index.html">
+<meta property="og:site_name" content="LXY's Notes">
+<meta property="og:description" content="2024.12.23 855.考场就坐在考场里，一排有 N 个座位，分别编号为 0, 1, 2, ..., N-1 。 当学生进入考场后，他必须坐在能够使他与离他最近的人之间的距离达到最大化的座位上。如果有多个这样的座位，他会坐在编号最小的座位上。(另外，如果考场里没有人，那么学生就坐在 0 号座位上。) 返回 ExamRoom(int N) 类，它有两个公开的函数：其中，函数 ExamRoom.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/kanna.jpg">
+<meta property="article:published_time" content="2024-12-23T01:53:03.000Z">
+<meta property="article:modified_time" content="2024-12-23T02:46:44.525Z">
+<meta property="article:author" content="expAddThree">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="每日1题">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/kanna.jpg"><link rel="shortcut icon" href="/img/myIcon.png"><link rel="canonical" href="http://example.com/2024/12/23/%E6%AF%8F%E6%97%A51%E9%A2%98/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        if (name && globalFn[key][name]) return
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":-1,"unescape":true,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":true,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '每日1题',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-12-23 10:46:44'
+}</script><link rel="stylesheet" href="/css/modify.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/img/background-1.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/kanna.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"></div><div class="site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">58</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">26</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">28</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">LXY's Notes</span></a><a class="nav-page-title" href="/"><span class="site-name">每日1题</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">每日1题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-12-23T01:53:03.000Z" title="发表于 2024-12-23 09:53:03">2024-12-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-12-23T02:46:44.525Z" title="更新于 2024-12-23 10:46:44">2024-12-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/LeetCode/">LeetCode</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/LeetCode/%E6%AF%8F%E6%97%A51%E9%A2%98/">每日1题</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="2024-12-23-855-考场就坐"><a href="#2024-12-23-855-考场就坐" class="headerlink" title="2024.12.23 855.考场就坐"></a>2024.12.23 855.<font color="orange">考场就坐</font></h3><p>在考场里，一排有 <code>N</code> 个座位，分别编号为 <code>0, 1, 2, ..., N-1</code> 。</p>
+<p>当学生进入考场后，他必须坐在能够使他与离他最近的人之间的距离达到最大化的座位上。如果有多个这样的座位，他会坐在编号最小的座位上。(另外，如果考场里没有人，那么学生就坐在 0 号座位上。)</p>
+<p>返回 <code>ExamRoom(int N)</code> 类，它有两个公开的函数：其中，函数 <code>ExamRoom.seat()</code> 会返回一个 <code>int</code> （整型数据），代表学生坐的位置；函数 <code>ExamRoom.leave(int p)</code> 代表坐在座位 <code>p</code> 上的学生现在离开了考场。每次调用 <code>ExamRoom.leave(p)</code> 时都保证有学生坐在座位 <code>p</code> 上。</p>
+<blockquote>
+<p>输入：[“ExamRoom”,”seat”,”seat”,”seat”,”seat”,”leave”,”seat”], [[10],[],[],[],[],[4],[]]<br>输出：[null,0,9,4,2,null,5]<br>解释：<br>ExamRoom(10) -&gt; null<br>seat() -&gt; 0，没有人在考场里，那么学生坐在 0 号座位上。<br>seat() -&gt; 9，学生最后坐在 9 号座位上。<br>seat() -&gt; 4，学生最后坐在 4 号座位上。<br>seat() -&gt; 2，学生最后坐在 2 号座位上。<br>leave(4) -&gt; null<br>seat() -&gt; 5，学生最后坐在 5 号座位上。</p>
+</blockquote>
+<p>这个题目就是说离别人最远，要是有多个最远的位置，取最小序号的那个。</p>
+<p><strong>延迟删除 + 有序集合 + 优先队列</strong></p>
+<p>假设有两个学生，他们的位置分别为s<sub>1</sub>和s<sub>2</sub>，我们用区间[s<sub>1</sub>,s<sub>2</sub>]表示他们之间的空闲座位区间。如果固定某一个区间，那么座位选择该区间的中点s = s<sub>1</sub> + ⌊(s<sub>2</sub> - s<sub>1</sub>) / 2⌋能够使新进入的学生与离他最近的人之间的距离达到最大化。</p>
+<p>由题意可知，我们需要实时地维护这些区间的顺序关系，并且能实时地获取这些区间中最优区间（最优区间：能够使新进入的学生与离他最近的人之间的距离达到最大化），同时还要求实时地删除某个学生占用的座位以及修改对应的区间关系。现成的数据结构并不能很好地满足这些需求，我们尝试将删除区间这一操作延迟到获取最优区间时执行。</p>
+<p>使用有序集合 <em>seats</em> 保存已经有学生的座位编号，优先队列 <em>pq</em> 保存座位区间（假设优先队列中的两个区间分别为[s<sub>1</sub>,s<sub>2</sub>]和[s<sub>3</sub>,s<sub>4</sub>]，那么如果⌊(s<sub>2</sub> - s<sub>1</sub>) / 2⌋ &gt; ⌊(s<sub>4</sub> - s<sub>3</sub>) / 2⌋ 或者 ⌊(s<sub>2</sub> - s<sub>1</sub>) / 2⌋ = ⌊(s<sub>4</sub> - s<sub>3</sub>) / 2⌋ <em>and</em> s<sub>1</sub> &lt; s<sub>3</sub>，那么区间 [s<sub>1</sub>,s<sub>2</sub>] 比区间 [s<sub>3</sub>,s<sub>4</sub>] 更优。</p>
+<p><strong>对于<em>seat</em>函数</strong></p>
+<p>学生进入考场时，有三种情况：</p>
+<ol>
+<li>考场没有一个学生，那么学生只能坐在座位 0；将座位 0 插入有序集合 <em>seats</em>，并且返回座位 0。</li>
+<li>考场有超过两位学生，并且选择这些学生所在的座位组成的区间比直接坐在考场的最左或者最右的座位更优；首先判断优先队列中最优的区间是否有效（有效指当前区间的左右两个端点的座位有学生，中间的所有座位都没有学生），如果无效，删除该区间。设当前有效区间为[s<sub>1</sub>,s<sub>2</sub>]，最左的座位跟最左的有学生的座位的距离为 <em>left</em>，最右的座位跟最右的有学生的座位的距离为 <em>right</em>，如果<br>⌊(s<sub>2</sub> - s<sub>1</sub>) / 2⌋ &gt; <em>left</em>  且 ⌊(s<sub>2</sub> - s<sub>1</sub>) / 2⌋ ≥ <em>right</em>  ，那么选择当前最优区间比直接坐在考场的最左或者最右的座位更优，学生坐下的座位为<br>s = s<sub>1</sub> + ⌊(s<sub>2</sub> - s<sub>1</sub>) / 2⌋，将当前区间从优先队列 <em>pq</em> 中移除，然后分别将新增加的两个区间[s<sub>1</sub>,s]和[s,s<sub>2</sub>]插入优先队列 <em>pq</em>，将 <em>s</em> 插入有序集合 <em>seats</em>，返回座位 <em>s</em>。</li>
+<li>考场少于两位学生，或者直接坐在考场的最左或者最右的座位比选择这些学生组成的区间更优。如果是最左的座位更优，那么将新增加的区间插入优先队列 pq，最左的座位插入有序集合 seats，并且返回最左的座位；最右的座位的做法类似。</li>
+</ol>
+<p><strong>对于<em>leave</em>函数</strong></p>
+<p>如果要删除的座位 <em>p</em> 上的学生不是所有学生的最左或者最右的学生，那么删除该学生会产生新的区间，我们将该区间放入优先队列 <em>pq</em> 中，然后在有序集合 <em>seats</em> 中删除该学生；否则只需要在有序集合 <em>seats</em> 中删除该学生。对于删除座位后已经无效的区间，我们只需要在 <em>seat</em> 函数中判断区间是否有效即可。</p>
+<figure class="highlight py"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> heapq</span><br><span class="line"><span class="keyword">from</span> sortedcontainers <span class="keyword">import</span> SortedSet</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Interval</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, start, end</span>):</span><br><span class="line">        <span class="variable language_">self</span>.start = start</span><br><span class="line">        <span class="variable language_">self</span>.end = end</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__lt__</span>(<span class="params">self, other</span>):</span><br><span class="line">        d1 = (<span class="variable language_">self</span>.end - <span class="variable language_">self</span>.start) // <span class="number">2</span></span><br><span class="line">        d2 = (other.end - other.start) // <span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> d1 == d2:</span><br><span class="line">            <span class="keyword">return</span> <span class="variable language_">self</span>.start &lt; other.start</span><br><span class="line">        <span class="keyword">return</span> d1 &gt; d2</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ExamRoom</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, n</span>):</span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type n: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="variable language_">self</span>.n = n</span><br><span class="line">        <span class="variable language_">self</span>.seats = SortedSet()</span><br><span class="line">        <span class="variable language_">self</span>.pq = [] </span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">seat</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> <span class="variable language_">self</span>.seats:</span><br><span class="line">            <span class="variable language_">self</span>.seats.add(<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        left = <span class="variable language_">self</span>.seats[<span class="number">0</span>]</span><br><span class="line">        right = <span class="variable language_">self</span>.n - <span class="number">1</span> - <span class="variable language_">self</span>.seats[-<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">while</span> <span class="built_in">len</span>(<span class="variable language_">self</span>.seats) &gt;= <span class="number">2</span>:</span><br><span class="line">            p = <span class="variable language_">self</span>.pq[<span class="number">0</span>]</span><br><span class="line">            start, end = p.start, p.end</span><br><span class="line">            <span class="keyword">if</span> start <span class="keyword">in</span> <span class="variable language_">self</span>.seats <span class="keyword">and</span> end <span class="keyword">in</span> <span class="variable language_">self</span>.seats <span class="keyword">and</span> <span class="variable language_">self</span>.seats[<span class="variable language_">self</span>.seats.index(start) + <span class="number">1</span>] == end: <span class="comment"># 不属于延迟删除的区间</span></span><br><span class="line">                d = end - start</span><br><span class="line">                <span class="keyword">if</span> d // <span class="number">2</span> &lt; right <span class="keyword">or</span> d // <span class="number">2</span> &lt;= left:  <span class="comment"># 最左或最右的座位更优</span></span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                heapq.heappop(<span class="variable language_">self</span>.pq)</span><br><span class="line">                mid = start + d // <span class="number">2</span></span><br><span class="line">                heapq.heappush(<span class="variable language_">self</span>.pq, Interval(start, mid))</span><br><span class="line">                heapq.heappush(<span class="variable language_">self</span>.pq, Interval(mid, end))</span><br><span class="line">                <span class="variable language_">self</span>.seats.add(mid)</span><br><span class="line">                <span class="keyword">return</span> mid</span><br><span class="line">            heapq.heappop(<span class="variable language_">self</span>.pq) <span class="comment"># leave 函数中延迟删除的区间在此时删除</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> right &gt; left: <span class="comment"># 最右的位置更优</span></span><br><span class="line">            heapq.heappush(<span class="variable language_">self</span>.pq, Interval(<span class="variable language_">self</span>.seats[-<span class="number">1</span>], <span class="variable language_">self</span>.n - <span class="number">1</span>))</span><br><span class="line">            <span class="variable language_">self</span>.seats.add(<span class="variable language_">self</span>.n - <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="variable language_">self</span>.n - <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            heapq.heappush(<span class="variable language_">self</span>.pq, Interval(<span class="number">0</span>, <span class="variable language_">self</span>.seats[<span class="number">0</span>]))</span><br><span class="line">            <span class="variable language_">self</span>.seats.add(<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">leave</span>(<span class="params">self, p</span>):</span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type p: int</span></span><br><span class="line"><span class="string">        :rtype: None</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> p != <span class="variable language_">self</span>.seats[<span class="number">0</span>] <span class="keyword">and</span> p != <span class="variable language_">self</span>.seats[-<span class="number">1</span>]:</span><br><span class="line">            prev = <span class="variable language_">self</span>.seats[<span class="variable language_">self</span>.seats.index(p) - <span class="number">1</span>]</span><br><span class="line">            <span class="built_in">next</span> = <span class="variable language_">self</span>.seats[<span class="variable language_">self</span>.seats.index(p) + <span class="number">1</span>]</span><br><span class="line">            heapq.heappush(<span class="variable language_">self</span>.pq, Interval(prev, <span class="built_in">next</span>))</span><br><span class="line">        <span class="variable language_">self</span>.seats.remove(p)</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>heapq 是 Python 标准库中的一个模块，用于实现堆队列算法（也称为优先队列算法）。它提供了一种高效的方式来处理最小堆或最大堆数据结构。</li>
+<li>SortedSet 是 sortedcontainers 库中的一个数据结构，它是一个有序的集合（set），能够自动对插入的元素进行排序，并且保证集合中没有重复元素。SortedSet 的排序行为依赖于元素的比较规则。一般是从小到大。</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">expAddThree</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2024/12/23/%E6%AF%8F%E6%97%A51%E9%A2%98/">http://example.com/2024/12/23/%E6%AF%8F%E6%97%A51%E9%A2%98/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">LXY's Notes</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/LeetCode/">LeetCode</a><a class="post-meta__tags" href="/tags/%E6%AF%8F%E6%97%A51%E9%A2%98/">每日1题</a></div><div class="post-share"><div class="social-share" data-image="/img/kanna.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer=""></script></div></div><nav class="pagination-post" id="pagination"><a class="next-post pull-full" href="/2024/12/18/hot100/" title="hot100"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">hot100</div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a href="/2024/10/14/Leetcode-Day01/" title="Leetcode_Day01"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-14</div><div class="title">Leetcode_Day01</div></div></a><a href="/2024/10/16/Leetcode-Day02&amp;Day03/" title="Leetcode-Day02&amp;Day03"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-16</div><div class="title">Leetcode-Day02&amp;Day03</div></div></a><a href="/2024/10/23/Leetcode-Day05/" title="Leetcode-Day05"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-23</div><div class="title">Leetcode-Day05</div></div></a><a href="/2024/10/17/Leetcode-Day04/" title="Leetcode-Day04"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-17</div><div class="title">Leetcode-Day04</div></div></a><a href="/2024/10/25/Leetcode-Day07&amp;Day08/" title="Leetcode-Day07&amp;Day08"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-25</div><div class="title">Leetcode-Day07&amp;Day08</div></div></a><a href="/2024/10/24/Leetcode-Day06/" title="Leetcode-Day06"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-24</div><div class="title">Leetcode-Day06</div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info is-center"><div class="avatar-img"><img src="/img/kanna.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="author-info-name">expAddThree</div><div class="author-info-description">5L2g5aW977yBCg==</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">58</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">26</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">28</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/expAdd3"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="mailto:lixybupt@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">An announcement means no announcement! (^_^)</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#2024-12-23-855-%E8%80%83%E5%9C%BA%E5%B0%B1%E5%9D%90"><span class="toc-text">2024.12.23 855.考场就坐</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/23/%E6%AF%8F%E6%97%A51%E9%A2%98/" title="每日1题">每日1题</a><time datetime="2024-12-23T01:53:03.000Z" title="发表于 2024-12-23 09:53:03">2024-12-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/18/hot100/" title="hot100">hot100</a><time datetime="2024-12-18T13:06:39.000Z" title="发表于 2024-12-18 21:06:39">2024-12-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/09/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95/" title="推荐算法面试">推荐算法面试</a><time datetime="2024-12-09T05:07:50.000Z" title="发表于 2024-12-09 13:07:50">2024-12-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/09/Leetcode-Day18/" title="Leetcode-Day18">Leetcode-Day18</a><time datetime="2024-12-09T02:06:53.000Z" title="发表于 2024-12-09 10:06:53">2024-12-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/11/Dive%20Into%20Deep%20Learning/" title="Dive Into Deep Learning">Dive Into Deep Learning</a><time datetime="2024-11-11T06:48:59.000Z" title="发表于 2024-11-11 14:48:59">2024-11-11</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent;"><div id="footer-wrap"><div class="copyright">©2019 - 2024 By expAddThree</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+      
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script></div><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"></div></div><hr><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
